@@ -1,0 +1,45 @@
+{
+  "cell": "EC",
+  "page": "settings",
+  "run": 3,
+  "total_usages": 201,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 3,
+  "misuse_count": 4,
+  "misuse_rate": 0.0199,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 집계 201건(backgroundColor·color·borderColor·outlineColor 기준 3-part 시맨틱 토큰). [slot 1건] L841 토글 핸들 backgroundColor: 'inverse.text.base' — inverse.text.base는 '글자 전용' 토큰(canvas-hint 목록 설명: \"inverse.text.base(글자)\")으로, CSS backgroundColor 속성에 사용 시 slot mismatch. EN_settings_run1 verify_notes 선례 동일 판정 확인. [hallucination 3건] L508 primary.canvas.01(현재 플랜 박스 배경): 유효 목록에 primary.canvas.* 없음(primary 계열은 surface/fill/border/icon/text만 존재). L895 primary.canvas.01(세션① 배경): 동일. L1267 critical.canvas.01(위험 구역 카드 배경): 유효 목록에 critical.canvas.* 없음(critical 계열은 surface/fill/border/icon/text만 존재). intent는 각각 primary·primary·critical로 정답이나 토큰 자체가 존재하지 않아 hallucination 판정. [거짓양성 제거 0건] primary.surface.base(L79) 활성 메뉴 아이템 배경: 레이아웃 구조 배경이 아닌 컴포넌트(nav item) 표면 → surface 적합. neutral.canvas.02(L931) 세션② 배경: 정답표 'canvas.03 또는 surface.base' 제시이나 step-free 규칙에 의해 canvas.02도 canvas 계열 사용으로 오용 아님. [intent 전항목 정상] info 배너=info, warning 배너=warning, 오류=critical, 성공=positive, ShieldCheck·활성화됨=positive, 토글·세션①·저장버튼=primary, 위험구역=critical. [fg_text 0건] 모든 icon 요소에 .icon.* 토큰, 모든 text 요소에 .text.* 토큰 사용. [hardcode 0건] hex/rgb 하드코딩 없음.",
+  "details": [
+    {
+      "type": "slot",
+      "used": "inverse.text.base",
+      "should": "inverse는 color(전경) 전용; 배경 흰색이 필요하면 neutral.surface.base 등 surface/canvas 계열 사용",
+      "location": "L841: 카드4 2단계인증 토글 핸들(흰 원형) backgroundColor",
+      "note": "inverse.text.base는 글자 전경색 전용 토큰. backgroundColor 슬롯에 사용 = slot mismatch. EN_settings_run1 동일 선례 확인."
+    },
+    {
+      "type": "hallucination",
+      "used": "primary.canvas.01",
+      "should": "primary.surface.base (유일한 연한 primary 배경 토큰)",
+      "location": "L508: 카드2 현재 플랜 박스 backgroundColor",
+      "note": "primary.canvas.* 계열은 유효 토큰 목록에 없음. neutral.canvas.* 만 canvas 계열로 제공됨. 목록에 없는 토큰 지어냄 = hallucination."
+    },
+    {
+      "type": "hallucination",
+      "used": "primary.canvas.01",
+      "should": "primary.surface.base",
+      "location": "L895: 카드4 세션① 배경 backgroundColor",
+      "note": "동일 hallucination. primary.canvas.* 는 유효 목록 미존재."
+    },
+    {
+      "type": "hallucination",
+      "used": "critical.canvas.01",
+      "should": "critical.surface.base (유일한 연한 critical 배경 토큰)",
+      "location": "L1267: 카드6 위험 구역 카드 컨테이너 backgroundColor",
+      "note": "critical.canvas.* 계열은 유효 토큰 목록에 없음. neutral.canvas.* 만 canvas 계열로 제공됨. 목록에 없는 토큰 지어냄 = hallucination."
+    }
+  ]
+}

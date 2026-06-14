@@ -1,0 +1,16 @@
+{
+  "cell": "EC",
+  "page": "notifications",
+  "run": 3,
+  "total_usages": 168,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 집계 168건. 5차원 모두 이상 없음. (1) slot/role: 레이아웃 배경(페이지루트·헤더·사이드바·목록영역)은 neutral.canvas.01/02 사용, 빈상태카드는 neutral.canvas.02 사용 — canvas 계열 정확히 적용. 읽지않음 알림 카드 배경 primary.surface.base는 primary.canvas.* 토큰이 존재하지 않아 불가피하며 정답표 주석('읽지않음 카드 배경은 primary surface')에 의거 오용 아님. 사이드바 카운터 카드(primary/critical/warning.surface.base)도 해당 intent의 canvas 토큰이 없어 정당. neutral.surface.transparent는 버튼/ghost 컴포넌트 표면 전용으로 적절히 사용됨. (2) intent: 미읽음 카드 배경=primary.surface.base(①~⑤) ✓, 읽음 카드 배경=neutral.canvas.02(⑥~⑧) ✓, 알림⑦ '처리됨' 뱃지=neutral ✓, 알림⑧ '안내' 뱃지=neutral ✓(읽음=중립화), 알림① positive/알림② critical/알림③ warning/알림④ info/알림⑤ primary 강조선·아이콘·뱃지 일치 ✓. 활성탭 primary.border.highest+primary.text.base ✓. 카테고리 선택 primary.fill.base+inverse.text.base ✓. 읽음 강조선·아이콘=계열 유지+opacity 약화(색 교체 없음) ✓. (3) fg/text: 모든 아이콘 요소에 *.icon.base, 모든 텍스트 요소에 *.text.* 적용. icon↔text 혼용 없음. (4) hardcode: hex/rgb/hsl 0건. (5) hallucination: 사용 토큰 36종 전수 대조, tokens-intent-first-canvas-hint.md 목록 내 모두 유효 확인.",
+  "details": []
+}

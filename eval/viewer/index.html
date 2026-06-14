@@ -6,7 +6,7 @@
 <title>v3 토큰 오용률 — property-first vs E+ (편향 제거)</title>
 <style>
   :root{--bg:#0e0f13;--panel:#181a21;--line:#2a2d37;--txt:#e6e8ee;--mut:#9aa0ad;
-    --rf:#e5484d;--pf:#30a46c;--e:#0090ff;--en:#8e4ec6;--iv:#f76b15;--es:#d6409f;}
+    --rf:#e5484d;--pf:#30a46c;--e:#0090ff;--en:#8e4ec6;--iv:#f76b15;--es:#d6409f;--ec:#12a594;}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo",sans-serif}
   header{padding:24px 28px;border-bottom:1px solid var(--line)}
@@ -28,6 +28,7 @@
   .tab[data-arm=E].on{background:var(--e);border-color:var(--e)}
   .tab[data-arm=EN].on{background:var(--en);border-color:var(--en)}
   .tab[data-arm=ES].on{background:var(--es);border-color:var(--es)}
+  .tab[data-arm=EC].on{background:var(--ec);border-color:var(--ec)}
   .tab[data-arm=IV].on{background:var(--iv);border-color:var(--iv)}
   .tab[data-arm=PF].on{background:var(--pf);border-color:var(--pf)}
   .tab[data-arm=RF].on{background:var(--rf);border-color:var(--rf)}
@@ -37,7 +38,7 @@
   .cap{display:flex;justify-content:space-between;align-items:center;padding:10px 13px;border-bottom:1px solid var(--line)}
   .cap .id{font-weight:700}
   .pill{font-size:11px;padding:2px 8px;border-radius:999px;color:#fff}
-  .pill.E{background:var(--e)}.pill.PF{background:var(--pf)}.pill.RF{background:var(--rf)}.pill.EN{background:var(--en)}.pill.IV{background:var(--iv)}.pill.ES{background:var(--es)}
+  .pill.E{background:var(--e)}.pill.PF{background:var(--pf)}.pill.RF{background:var(--rf)}.pill.EN{background:var(--en)}.pill.IV{background:var(--iv)}.pill.ES{background:var(--es)}.pill.EC{background:var(--ec)}
   .cap .r{font-weight:800}
   .shot{width:100%;display:block;background:#fff;max-height:460px;object-fit:cover;object-position:top;cursor:zoom-in}
   .meta{padding:10px 13px;font-size:12.5px;color:var(--mut)}
@@ -66,8 +67,8 @@
 </head>
 <body>
 <header>
-  <h1>v3 토큰 오용률 — 5-arm 비교 (PF · E− · E+ · ES · INV)</h1>
-  <div class="sub">동일 중립 스펙 · Sonnet 4.6 생성·블라인드 채점 · step-free layer · raw 정규화 오용률. PF=property-first 이름만 / E−=intent-first 이름만 / E+=intent-first 이름+설명 / ES=intent-first 이름+설명(step 어휘 변경) / INV=slot-first 이름+설명(셀 E 토큰)</div>
+  <h1>v3 토큰 오용률 — 6-arm 비교 (PF · E− · EC · E+ · ES · INV)</h1>
+  <div class="sub">동일 중립 스펙 · Sonnet 4.6 생성·블라인드 채점 · step-free layer · raw 정규화 오용률. PF=property-first 이름만 / E−=intent-first 이름만 / EC=E−에 canvas/surface 구분 설명만 추가 / E+=intent-first 이름+설명 / ES=intent-first 이름+설명(step 어휘 변경) / INV=slot-first 이름+설명(셀 E 토큰)</div>
 </header>
 <div class="wrap">
   <table class="sum" id="sum"></table>
@@ -76,6 +77,7 @@
     <span class="tab on" data-arm="ALL">전체</span>
     <span class="tab" data-arm="PF">PF</span>
     <span class="tab" data-arm="EN">E−</span>
+    <span class="tab" data-arm="EC">EC</span>
     <span class="tab" data-arm="E">E+</span>
     <span class="tab" data-arm="ES">ES</span>
     <span class="tab" data-arm="IV">INV</span>
@@ -86,7 +88,7 @@
 <div class="lb" id="lb"><img id="lbimg"></div>
 <script src="data.js?v=5arm-es"></script>
 <script>
-const D=window.DATA, order=D.order||['PF','EN','E','ES','IV'], col={RF:'var(--rf)',PF:'var(--pf)',E:'var(--e)',EN:'var(--en)',ES:'var(--es)',IV:'var(--iv)'};
+const D=window.DATA, order=D.order||['PF','EN','EC','E','ES','IV'], col={RF:'var(--rf)',PF:'var(--pf)',E:'var(--e)',EN:'var(--en)',EC:'var(--ec)',ES:'var(--es)',IV:'var(--iv)'};
 // summary table — raw 단일 오용률
 let mx=Math.max(...order.map(a=>D.summary[a].rate));
 let h='<tr><th>arm</th><th>raw 오용률</th><th>cells</th><th>사용횟수</th><th>오용</th><th>slot</th><th>intent</th><th>fg/text</th><th>hardcode</th><th>환각</th></tr>';
@@ -96,10 +98,11 @@ for(const a of order){const s=D.summary[a];
   `<td>${s.cells}</td><td>${s.usages}</td><td>${s.misuse}</td><td>${s.slot}</td><td>${s.intent}</td><td>${s.fg_text}</td><td>${s.hardcode}</td><td>${s.hallucination}</td></tr>`;}
 document.getElementById('sum').innerHTML=h;
 document.getElementById('keynote').innerHTML=
- `<b>읽는 법.</b> 동일한 중립 스펙(4페이지)으로 5개 토큰 변형안을 Sonnet 4.6이 생성, 코드 기반 블라인드로 채점. <b>raw 정규화 오용률</b> = 오용 ÷ 시맨틱 컬러 토큰 사용 총횟수. layer(canvas)는 <b>step-free</b>(canvas 계열 사용 여부만, 01/02/03 정밀도 미채점). 각 arm × 4페이지 × 3런 = 12셀.`+
+ `<b>읽는 법.</b> 동일한 중립 스펙(4페이지)으로 6개 토큰 변형안을 Sonnet 4.6이 생성, 코드 기반 블라인드로 채점. <b>raw 정규화 오용률</b> = 오용 ÷ 시맨틱 컬러 토큰 사용 총횟수. layer(canvas)는 <b>step-free</b>(canvas 계열 사용 여부만, 01/02/03 정밀도 미채점). 각 arm × 4페이지 × 3런 = 12셀.`+
  `<ul style="margin:8px 0 0 0;padding-left:18px">`+
  `<li><b>PF</b> — property-first 이름만(slot-first 네이밍, 설명 없음 = 자동완성 동등). 별도 토큰 체계.</li>`+
  `<li><b>E−</b> — intent-first 이름만(설명 없음).</li>`+
+ `<li><b>EC</b> — E−에 <b>canvas/surface 구분 설명만</b> 추가(나머지 이름만). (E−↔EC = canvas/surface 단일 힌트 효과)</li>`+
  `<li><b>E+</b> — intent-first 이름+설명. (E−↔E+ = 설명 효과 격리)</li>`+
  `<li><b>ES</b> — intent-first 이름+설명, <b>셀 E와 동일 토큰·값·순서</b>에서 step 어휘만 교체(muted/subtle/default/strongest/emphasis). (E+↔ES = step 어휘 효과 격리)</li>`+
  `<li><b>INV</b> — slot-first 이름+설명, <b>셀 E와 동일 토큰·값</b>을 순서만 반전. (E+↔INV = 순서 효과 격리)</li>`+

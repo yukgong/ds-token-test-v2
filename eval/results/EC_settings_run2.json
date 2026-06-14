@@ -1,0 +1,24 @@
+{
+  "cell": "EC",
+  "page": "settings",
+  "run": 2,
+  "total_usages": 196,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.0051,
+  "removed_false_positives": 0,
+  "verify_notes": "레이아웃 배경(aside·main·카드1~5)은 canvas.01/02 정확히 사용. 위험 구역 카드6은 critical.surface.base 사용 — 스펙 의도에 부합(layout layer가 아닌 intent surface). 세션2·3은 neutral.surface.base 사용 — 정답표 허용 범위. intent 전수 정확: info 배너=info, 포커스=primary+focus.border, 오류=critical, 성공=positive, warning 배너=warning, ShieldCheck=positive, '활성화됨' 뱃지=positive, 토글=primary. 모든 토큰 목록 내 존재(환각 0). 하드코딩 없음. 유일 오용: 토글 핸들(L935) backgroundColor: 'inverse.text.base' — text 슬롯 토큰을 background 속성에 사용(slot 오용). inverse 계열에 surface/fill 없어 대안이 제한적이나 text→bg 슬롯 교차는 규칙상 오용.",
+  "details": [
+    {
+      "type": "slot",
+      "used": "inverse.text.base",
+      "should": "해당 없음(inverse.surface/fill 미존재) — 의미상 흰 원형 핸들이므로 neutral.canvas.01 또는 neutral.surface.base가 가장 근사",
+      "location": "L935 — 카드4 2FA 토글 핸들(원형 div) backgroundColor",
+      "note": "inverse.text.base는 text 슬롯 토큰. backgroundColor 속성에 text 슬롯을 사용하면 slot/role mismatch. 토글 track은 primary.fill.base(정답) — 핸들만 이 오류."
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "cell": "EC",
+  "page": "dashboard",
+  "run": 1,
+  "total_usages": 233,
+  "slot": 4,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 4,
+  "misuse_rate": 0.0172,
+  "removed_false_positives": 3,
+  "verify_notes": "툴팁이 dark 클래스 + neutral.canvas.01 조합으로 구현됨 — EC arm의 국소 테마 교체 패턴으로 올바름(false positive 제거). primary.surface.high를 filled 버튼 hover bg로 사용 — surface는 컴포넌트 bg 슬롯으로 유효(false positive 제거). neutral.surface.transparent를 ghost 버튼 bg로 반복 사용 — valid(false positive 제거). 슬롯 오용 4건: 알림 설정 패널의 토글 핸들(thumb) 4개 모두 neutral.canvas.02 사용 — canvas는 레이아웃/구조 배경 전용이나 토글 thumb은 컴포넌트 서브 요소(neutral.surface.base 등이 올바름). intent 전수 검증: 토스트③(info)·통계카드③ -8%(positive)·Bell 뱃지(critical)·LogOut(critical)·리소스바 42/78/91%(positive/warning/critical)·테이블 상태열(positive/critical/warning) 모두 정답표 일치. focus.border 포커스 인풋 테두리+boxShadow 사용 = valid.",
+  "details": [
+    {
+      "type": "slot",
+      "used": "neutral.canvas.02",
+      "should": "neutral.surface.base (또는 surface 계열)",
+      "location": "알림 설정 패널 — 배포 알림 토글 핸들(thumb) line 1633",
+      "note": "canvas 토큰은 레이아웃/구조 배경 전용(페이지·카드·패널). 토글 thumb은 컴포넌트 서브 요소 — surface 슬롯 사용 필요"
+    },
+    {
+      "type": "slot",
+      "used": "neutral.canvas.02",
+      "should": "neutral.surface.base (또는 surface 계열)",
+      "location": "알림 설정 패널 — 장애 알림 토글 핸들(thumb) line 1673",
+      "note": "canvas 토큰은 레이아웃/구조 배경 전용. 토글 thumb은 컴포넌트 서브 요소"
+    },
+    {
+      "type": "slot",
+      "used": "neutral.canvas.02",
+      "should": "neutral.surface.base (또는 surface 계열)",
+      "location": "알림 설정 패널 — 보안 알림 토글 핸들(thumb) line 1713",
+      "note": "canvas 토큰은 레이아웃/구조 배경 전용. 토글 thumb은 컴포넌트 서브 요소"
+    },
+    {
+      "type": "slot",
+      "used": "neutral.canvas.02",
+      "should": "neutral.surface.base (또는 surface 계열)",
+      "location": "알림 설정 패널 — 마케팅 알림 토글 핸들(thumb) line 1754",
+      "note": "canvas 토큰은 레이아웃/구조 배경 전용. 토글 thumb은 컴포넌트 서브 요소"
+    }
+  ]
+}

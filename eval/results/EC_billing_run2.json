@@ -1,0 +1,16 @@
+{
+  "cell": "EC",
+  "page": "billing",
+  "run": 2,
+  "total_usages": 237,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0,
+  "removed_false_positives": 2,
+  "verify_notes": "전수 집계 237건. slot: critical.surface.base가 결제실패 행(L927) 및 미결제 카드 컨테이너(L1141) 배경에 사용됨 — 두 곳 모두 스펙이 명시한 intent 지정 배경이므로 canvas 미사용이 아닌 올바른 intent 표현으로 판정, 거짓양성 제거(2건). intent: 처리중=warning(L1007), 환불완료=info(L1028), Pro Check=primary(L437), Free/Ent Check=positive(L279,L565), 예정뱃지=info(L1235), 만료배너=warning(L747) 모두 정답. fg_text: 아이콘에 icon슬롯, 텍스트에 text슬롯 일관 사용, 혼용 없음. hardcode: 없음. hallucination: 유효 토큰 목록(tokens-intent-first-canvas-hint.md) 전품목 일치, 지어낸 토큰 없음. 사이드바 dark 클래스 국소 적용(L30) + neutral.canvas.01 배경 명시(L35) = 올바른 다크 테마 처리.",
+  "details": []
+}

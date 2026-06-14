@@ -1,15 +1,17 @@
-# ds-token-test-v3 — 5-arm 비교 (PF · E− · E+ · ES · INV) · step-free layer
+# ds-token-test-v3 — 6-arm 비교 (PF · E− · EC · E+ · ES · INV) · step-free layer
 
 > 2026-06-14~15. 동일 중립 스펙(4페이지: dashboard·billing·notifications·settings) × 3런. 생성·채점·검증 모두 **Sonnet 4.6**, 블라인드. raw 정규화 오용률(= 오용 ÷ 시맨틱 컬러 토큰 사용 총횟수). layer(canvas)는 **step-free**(canvas 계열 사용 여부만, 01/02/03 정밀도 미채점).
-> ES(2026-06-15 추가) = 셀 E와 토큰 구조·색상값·순서 100% 동일, **step(단계) 어휘만 교체**: `lowest→muted, low→subtle, base→default, high→strongest, highest→emphasis`. E+와 비교하면 step 어휘만 다름.
+> ES(2026-06-15) = 셀 E와 토큰 구조·색상값·순서 100% 동일, **step 어휘만 교체**: `lowest→muted, low→subtle, base→default, high→strongest, highest→emphasis`.
+> EC(2026-06-15) = **E−(이름만)에 canvas/surface/fill 구분 설명만** 상단 추가(나머지 토큰 목록은 이름만 유지). E−의 지배적 실패(surface↔canvas 혼동)에 단일 힌트만 주면 얼마나 닫히는지 격리.
 
-## 종합 (5 arm × 4page × 3run = 60셀)
+## 종합 (6 arm × 4page × 3run = 72셀)
 
 | arm | 네이밍 | 설명 | 오용률 | 오용/사용 | slot | intent | fg/text | halluc. |
 |---|---|---|---|---|---|---|---|---|
 | **INV** | slot-first (셀 E 토큰) | ✓ | **0.34%** | 7 / 2082 | 7 | 0 | 0 | 0 |
 | **E+** | intent-first | ✓ | **0.37%** | 7 / 1910 | 7 | 0 | 0 | 0 |
 | **ES** | intent-first (step 어휘 변경) | ✓ | **0.47%** | 10 / 2131 | 9 | 1 | 0 | 0 |
+| **EC** | intent-first 이름만 + canvas/surface 구분 설명만 | (부분) | **0.75%** | 16 / 2129 | 10 | 0 | 0 | 6 |
 | **PF** | property-first | ✗ | **0.85%** | 17 / 2006 | 12 | 0 | 5 | 0 |
 | **E−** | intent-first | ✗ | **1.70%** | 39 / 2300 | 38 | 1 | 0 | 0 |
 
@@ -22,6 +24,11 @@
 
 ### ② 순서 효과 (E+ vs INV, 설명·토큰 고정) — **미미**
 **E+ 0.37% ≈ INV 0.34%** (동일 셀 E 토큰을 `{intent}.{slot}` ↔ `{slot}.{intent}` 순서만 반전). 거의 차이 없음 → **설명이 있으면 토큰 경로의 슬롯/인텐트 순서는 오용률에 거의 영향 없음.** 잔존 패턴도 양쪽 동일(border-as-divider, 토글 knob inverse).
+
+### ④ canvas/surface 단일 힌트 효과 (E− vs EC) — **큰 폭 개선, 단 부작용**
+**E− 1.70% → EC 0.75% (약 2.3× 감소).** E−에서 **canvas/surface/fill 구분 설명 한 단락만** 추가했더니, E−의 지배적 실패였던 **surface→canvas 레이아웃 배경 혼동이 사실상 소멸**(EC의 잔존 slot 10건은 거의 전부 토글 knob·세로 구분선 backgroundColor로 E+/INV와 공유하는 커버리지성 잔여, canvas/surface 레이어 혼동 아님). → **E−의 1.70%는 거의 전부 'canvas vs surface를 모름' 한 가지 원인이었음**이 단일 힌트로 입증됨.
+- **단, 부작용:** EC에서 **환각 6건 발생**(settings run1·run3의 `primary.canvas.01`·`critical.canvas.01`). canvas 힌트("구조 컨테이너 배경=canvas")를 **색상 인텐트 컨테이너(Pro 플랜 박스·위험 구역)에 과확장**해 `primary.canvas`/`critical.canvas`를 발명 — canvas는 neutral 전용인데 힌트가 그 경계를 명시하지 않은 탓. E+의 전체 토큰 목록·per-token 설명은 이 실수를 막음(그래서 E+ 0.37% < EC 0.75%).
+- → **단일 힌트로 지배적 실패의 ~65%를 닫지만, 부분 설명은 새 과확장 환각을 유발.** 완전한 per-token 설명(E+)이 여전히 우위.
 
 ### ②′ step 어휘 효과 (E+ vs ES, 설명·토큰·순서 고정) — **미미**
 **E+ 0.37% ≈ ES 0.47%** (동일 셀 E 토큰에서 step 단어만 `base/high/highest/low/lowest` → `default/strongest/emphasis/subtle/muted`로 교체). 통계적 동률 — 차이 3건(ES dashboard run1 3건 등)은 런간 노이즈 수준이며 slot 9·intent 1로 패턴도 E+와 동질. → **설명이 있으면 step 축 어휘 선택(base-계열 vs default-계열)도 오용률에 거의 영향 없음.** ②(순서)와 함께, 설명이 지배 변수일 때 네이밍 표면(순서·step 어휘)은 부차적임을 재확인.

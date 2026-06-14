@@ -1,0 +1,24 @@
+{
+  "cell": "EC",
+  "page": "notifications",
+  "run": 1,
+  "total_usages": 105,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.0095,
+  "removed_false_positives": 3,
+  "verify_notes": "105개 토큰 전수 집계. 슬롯 오용 1건: tabActiveStyle의 borderBottomColor에 primary.fill.base 사용 — fill.*은 background 계열 CSS 속성 전용, borderBottomColor에는 primary.border.* 필요. | 거짓양성 제거 3건: (1) cardUnreadStyle backgroundColor=primary.surface.base — intent 정답표에서 명시 허용(primary.canvas.* 미존재), (2) filterActiveStyle backgroundColor=primary.fill.base — solid 버튼 패턴에서 fill을 backgroundColor에 사용하는 건 허용, (3) cardReadStyle backgroundColor=neutral.canvas.03 — 카드 구조 배경에 canvas 사용 정확. intent 오용 0: 알림①~⑤ 읽지않음 배경=primary.surface.base(정답), 알림⑦ 뱃지=neutral(처리됨=neutral 정답), 알림⑧ 뱃지=neutral(읽음=neutral 정답). 환각·하드코딩 없음.",
+  "details": [
+    {
+      "type": "slot",
+      "used": "primary.fill.base",
+      "should": "primary.border.base 또는 primary.border.high",
+      "location": "tabActiveStyle.borderBottomColor (line 121)",
+      "note": "fill.* 토큰은 background·backgroundColor·bg CSS 속성 전용. borderBottomColor는 border.* 슬롯을 사용해야 함."
+    }
+  ]
+}

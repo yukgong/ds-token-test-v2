@@ -1,0 +1,16 @@
+{
+  "cell": "EC",
+  "page": "notifications",
+  "run": 2,
+  "total_usages": 107,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 집계 107건. 5차원 모두 이상 없음. (1) slot/role: 레이아웃 배경(헤더·사이드바·목록영역·빈상태카드·페이지루트)은 전부 neutral.canvas.* 사용, 버튼·뱃지 등 컴포넌트는 surface.* 사용 — 정확히 분리됨. primary.surface.base를 읽지않음 카드 배경에 쓴 것은 유효 토큰 목록에 primary.canvas가 없어 불가피, 오용 아님. 카운터 카드(primary/critical/warning surface)도 같은 이유로 정당. (2) intent: 미읽음 배경=primary, 읽음 배경=neutral, 카드7 처리됨 뱃지=neutral, 카드8 안내 뱃지=neutral 모두 정답표 일치. 읽음 카드 강조선·아이콘은 계열 유지 + opacity 약화 — 색계열 교체 없음. (3) fg/text: 아이콘 요소에 .icon.*, 텍스트 요소에 .text.* 일관 적용. 혼용 없음. (4) hardcode: hex/rgb 없음. (5) hallucination: 사용 토큰 40종 전부 tokens-intent-first-canvas-hint.md 목록 내 확인.",
+  "details": []
+}

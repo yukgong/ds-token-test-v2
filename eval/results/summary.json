@@ -29,6 +29,21 @@
     "hardcode": 0,
     "hallucination": 0
   },
+  "EC": {
+    "label": "EC · intent-first 이름만 + canvas/surface 구분 설명만 (E−에 그 설명만 추가)",
+    "cells": 12,
+    "usages": 2129,
+    "misuse": 16,
+    "rate": 0.75,
+    "excluded": 0,
+    "adjusted_misuse": 16,
+    "adjusted_rate": 0.75,
+    "slot": 10,
+    "intent": 0,
+    "fg_text": 0,
+    "hardcode": 0,
+    "hallucination": 6
+  },
   "E": {
     "label": "E+ · intent-first 이름 + 설명",
     "cells": 12,

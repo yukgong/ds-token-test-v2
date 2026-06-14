@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 const base='http://localhost:3300';
 const shots=[];
-for (const [arm,route] of [['E','intent-first'],['EN','e-nodesc'],['ES','step-rename'],['IV','inverse-desc'],['PF','property-first']]) {
+for (const [arm,route] of [['E','intent-first'],['EN','e-nodesc'],['EC','e-canvas-hint'],['ES','step-rename'],['IV','inverse-desc'],['PF','property-first']]) {
   for (const page of ['dashboard','billing','notifications','settings'])
     for (const n of [1,2,3])
       shots.push([`${arm}_${page}_run${n}`, `${base}/${route}/${page}/run${n}`]);

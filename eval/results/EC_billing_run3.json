@@ -1,0 +1,16 @@
+{
+  "cell": "EC",
+  "page": "billing",
+  "run": 3,
+  "total_usages": 135,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0,
+  "removed_false_positives": 1,
+  "verify_notes": "neutral.surface.high (L77) 사이드바 활성 nav 항목 배경 — 레이아웃 컨테이너가 아닌 컴포넌트(nav item) 표면이므로 surface 사용 적합(거짓 양성 제거). 모든 레이아웃/카드/패널/페이지 배경은 neutral.canvas.01~03 올바르게 사용. intent 정답표 전항목 일치: 결제완료=positive, 결제실패=critical.fill, 처리중=warning, 환불완료=info, 만료배너=warning, Pro 전반=primary, Pro Check=primary.icon, Free/Enterprise Check=positive.icon, 로그아웃/삭제=critical. 아이콘에 icon 슬롯·텍스트에 text 슬롯 혼용 없음. 하드코딩 hex/rgb 없음. 사용 토큰 34종 전부 유효 목록 내 확인(환각 0). 다크 사이드바: aside 루트에 dark 클래스 정상 적용 + neutral.canvas.01 배경 명시.",
+  "details": []
+}

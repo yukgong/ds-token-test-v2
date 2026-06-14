@@ -20,7 +20,7 @@ export default defineConfig({
   jsxFramework: 'react',
   importMap: '@ds-token-test/styled-system-intent-first',
   outdir: 'styled-system-intent-first',
-  include: ['./src/app/intent-first/**/*.{js,jsx,ts,tsx}', './src/app/e-nodesc/**/*.{js,jsx,ts,tsx}'],
+  include: ['./src/app/intent-first/**/*.{js,jsx,ts,tsx}', './src/app/e-nodesc/**/*.{js,jsx,ts,tsx}', './src/app/e-canvas-hint/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       tokens: {

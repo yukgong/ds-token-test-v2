@@ -1,0 +1,16 @@
+{
+  "cell": "EC",
+  "page": "billing",
+  "run": 1,
+  "total_usages": 137,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0,
+  "removed_false_positives": 3,
+  "verify_notes": "전수 집계 137건(backgroundColor 35 + borderColor 24 + color 78). 오용 0건. 거짓양성 후보 3건 제거: ①Pro 카드 본문 `primary.surface.base`(L322) — 카드 컨테이너이나 primary.canvas.* 목록 없음, surface가 유일 선택이므로 slot 오용 아님. ②미결제 요약 카드 `critical.surface.base`(L1160) — 같은 이유. ③결제실패 테이블 행 `critical.surface.base`(L989) — 같은 이유. intent 전원 정답표 일치: 처리중→warning, 환불완료→info, 결제완료→positive, 결제실패→critical, Pro→primary, Pro Check→primary, Free/Ent Check→positive, 로그아웃→critical. fg/text 혼용 없음. 하드코딩 없음. 환각 없음(35개 고유 토큰 전원 유효 목록 내 확인). 어두운 사이드바에 dark 클래스 + neutral.canvas.02 정상 적용.",
+  "details": []
+}

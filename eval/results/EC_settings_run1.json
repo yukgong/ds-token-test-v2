@@ -1,0 +1,45 @@
+{
+  "cell": "EC",
+  "page": "settings",
+  "run": 1,
+  "total_usages": 201,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 3,
+  "misuse_count": 4,
+  "misuse_rate": 0.0199,
+  "removed_false_positives": 1,
+  "verify_notes": "total_usages=200개 3-segment 토큰 + 1개 focus.border(2-segment)=201. hallucination: 유효 토큰 목록에 neutral.canvas.01~03만 존재하고 primary.canvas.* 및 critical.canvas.*는 없음 — primary.canvas.01(L526, L908), critical.canvas.01(L1259) 총 3건. slot: inverse.text.base를 토글 핸들 원형 요소의 backgroundColor로 사용(L856) — text 슬롯 토큰을 배경 CSS 속성에 적용, 1건. false_positive 제거: neutral.border.low를 1px 높이 divider div의 backgroundColor로 사용(L882) — border-toned background로 수평선을 표현하는 일반적 패턴이므로 slot mismatch에서 제외(1건 제거). intent 전수 정확: info 배너=info, warning 배너=warning, 성공=positive, 오류=critical, 포커스=primary, 비활성=neutral+opacity. 하드코딩·환각(목록외 토큰명) 추가 없음.",
+  "details": [
+    {
+      "type": "hallucination",
+      "used": "primary.canvas.01",
+      "should": "primary.surface.base",
+      "location": "L526 — 카드2 현재 플랜 박스 backgroundColor",
+      "note": "유효 목록에 neutral.canvas.01~03만 존재. primary.canvas.* 토큰 없음. 현재 플랜 박스는 컴포넌트 표면이므로 primary.surface.base가 적합."
+    },
+    {
+      "type": "hallucination",
+      "used": "primary.canvas.01",
+      "should": "primary.surface.base",
+      "location": "L908 — 카드4 세션① 박스 backgroundColor",
+      "note": "유효 목록에 neutral.canvas.01~03만 존재. primary.canvas.* 토큰 없음. 세션 박스는 컴포넌트 표면이므로 primary.surface.base가 적합."
+    },
+    {
+      "type": "hallucination",
+      "used": "critical.canvas.01",
+      "should": "critical.surface.base",
+      "location": "L1259 — 카드6 위험 구역 카드 backgroundColor",
+      "note": "유효 목록에 neutral.canvas.01~03만 존재. critical.canvas.* 토큰 없음. 위험 구역 카드 배경은 critical.surface.base가 적합."
+    },
+    {
+      "type": "slot",
+      "used": "inverse.text.base",
+      "should": "inverse.icon.base (또는 별도 흰 fill 토큰)",
+      "location": "L856 — 켜진 토글 핸들(원형) backgroundColor",
+      "note": "text 슬롯 토큰(inverse.text.base)을 backgroundColor CSS 속성에 사용. 토큰 설명에서 '글자에 얹는 반대색'으로 명시. 배경 슬롯 대신 text 슬롯 오용."
+    }
+  ]
+}
