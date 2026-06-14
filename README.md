@@ -26,7 +26,7 @@ panda.config.intent-first-stepnames.ts   →  styled-system-intent-first-stepnam
 panda.config.intent-first-slotfirst.ts   →  styled-system-intent-first-slotfirst/  (slot-first 명칭, INV)
 ```
 
-> EC arm은 E−/E+와 토큰·값이 동일하므로 별도 config 없이 `styled-system-intent-first`를 공유한다(프롬프트 토큰 목록에 canvas/surface 구분 설명만 추가한 변형).
+> EC arm은 E−/E+와 토큰·값이 동일하므로 별도 config 없이 `styled-system-intent-first`를 공유한다(프롬프트 토큰 목록에 canvas/surface 구분 힌트만 추가한 변형, per-token 설명은 없음).
 
 각 styled-system을 완전히 분리하는 이유: autocomplete에 여러 토큰 이름이 섞이면 측정이 오염됨.
 
@@ -38,7 +38,7 @@ panda.config.intent-first-slotfirst.ts   →  styled-system-intent-first-slotfir
 |---|---|---|---|
 | **PF** | property-first | ✗ (자동완성 동등) | 외부 설계 토큰 체계 (비교 대조군) |
 | **E−** | intent-first | ✗ | E+와 설명 유무만 다름 |
-| **EC** | intent-first | 부분 | E−(이름만)에 **canvas/surface/fill 구분 설명만** 상단 추가 (per-token 설명 없음) |
+| **EC** | intent-first | ✗ | E−(이름만)에 **canvas/surface 구분 힌트 한 단락만** 추가 (per-token 설명 없음) |
 | **E+** | intent-first | ✓ | 신규 후보 (mildang 자체 설계) |
 | **ES** | intent-first (step 어휘 변경) | ✓ | 셀 E와 **동일 토큰·색상값·순서**, step 단어만 `low/base/high/highest/lowest` → `subtle/default/strongest/emphasis/muted` |
 | **INV** | slot-first | ✓ | 셀 E와 **동일 토큰·색상값**을 순서만 반전(`{intent}.{slot}` ↔ `{slot}.{intent}`) |
@@ -102,18 +102,18 @@ Park UI 컴포넌트는 PandaCSS semantic token을 직접 참조하므로, confi
 | **INV** | slot-first (셀 E 토큰) | ✓ | **0.34%** | 7 / 2082 | 세로 구분선·토글 knob (소수) |
 | **E+** | intent-first | ✓ | **0.37%** | 7 / 1910 | 세로 구분선·토글 knob (소수) |
 | **ES** | intent-first (step 어휘) | ✓ | **0.47%** | 10 / 2131 | 세로 구분선·토글 knob (소수) + intent 1 |
-| **EC** | intent-first + canvas/surface 설명만 | 부분 | **0.75%** | 16 / 2129 | 토글 knob·세로 구분선 + `primary/critical.canvas` 환각 6 |
+| **EC** | intent-first + canvas/surface 힌트만 | ✗ | **0.75%** | 16 / 2129 | 토글 knob·세로 구분선 + `primary/critical.canvas` 환각 6 |
 | **PF** | property-first | ✗ | **0.85%** | 17 / 2006 | slot 오용 + 아이콘↔텍스트 혼용 |
 | **E−** | intent-first | ✗ | **1.70%** | 39 / 2300 | surface를 레이아웃 배경에 사용 (canvas 오답) |
 
-정규화 오용률 = 오용 총건수 ÷ 시맨틱 컬러 토큰 사용 총횟수(생성 verbosity에 의한 분모 오염 방지). 설명 있는 arm(E+·ES·INV)은 환각 0; EC는 부분 힌트 부작용으로 환각 6건(아래 4번).
+정규화 오용률 = 오용 총건수 ÷ 시맨틱 컬러 토큰 사용 총횟수(생성 verbosity에 의한 분모 오염 방지). EC만 부분 힌트 부작용으로 `primary/critical.canvas` 환각 6건(아래 4번), 나머지 5개 arm은 환각 0.
 
 ### 변수 격리 결과
 
 1. **설명 효과 (E− → E+, 약 4.6× 감소)** — 결정적. E−의 오용은 거의 전부 `neutral.surface.*`를 카드·컨테이너·테이블 같은 **레이아웃 배경에 사용**(정답 `neutral.canvas.*`). 설명이 없으면 모델이 **canvas(레이아웃 레이어) vs surface(컴포넌트)** 를 구분하지 못함. → **설명이 오용률의 지배 변수.**
 2. **순서 효과 (E+ ≈ INV)** — 미미. 동일 토큰을 슬롯/인텐트 순서만 반전한 두 셀이 0.37% ≈ 0.34%로 사실상 동일, 잔존 패턴까지 같음. → **설명이 제공되면 네이밍 순서는 거의 무관.**
 3. **step 어휘 효과 (E+ ≈ ES)** — 미미. 동일 토큰에서 step 단어만 `base/high/…` → `default/strongest/…`로 교체한 두 셀이 0.37% ≈ 0.47%로 통계적 동률(차이 3건은 런 노이즈), 잔존 패턴도 동질. → **설명이 제공되면 step 축 어휘 선택도 거의 무관.**
-4. **canvas/surface 단일 힌트 (E− → EC, 약 2.3× 감소, 단 부작용)** — E−에 **canvas/surface/fill 구분 한 단락만** 추가하니 1.70% → 0.75%. E−의 지배적 실패였던 **surface→canvas 레이아웃 혼동이 사실상 소멸**(EC 잔존 slot 10건은 토글 knob·세로 구분선으로 E+/INV와 공유하는 커버리지성 잔여). → **E−의 1.70%는 거의 전부 'canvas vs surface를 모름' 한 가지 원인이었음**이 입증됨. **단 부작용**: EC에서 `primary.canvas.01`·`critical.canvas.01` **환각 6건** — "구조 컨테이너=canvas" 힌트를 색상 인텐트 컨테이너(Pro 박스·위험 구역)에 과확장했으나 canvas는 neutral 전용. 전체 per-token 설명(E+)은 이 실수를 막아 **E+(0.37%) < EC(0.75%)**. → **핀포인트 힌트로 지배적 실패의 ~65%를 닫지만, 부분 설명은 새 과확장 환각을 유발.**
+4. **canvas/surface 단일 힌트 (E− → EC, 약 2.3× 감소, 단 부작용)** — E−에 **canvas/surface 구분 한 단락만** 추가하니 1.70% → 0.75%. E−의 지배적 실패였던 **surface→canvas 레이아웃 혼동이 사실상 소멸**(EC 잔존 slot 10건은 토글 knob·세로 구분선으로 E+/INV와 공유하는 커버리지성 잔여). → **E−의 1.70%는 거의 전부 'canvas vs surface를 모름' 한 가지 원인이었음**이 입증됨. **단 부작용**: EC에서 `primary.canvas.01`·`critical.canvas.01` **환각 6건** — "구조 컨테이너=canvas" 힌트를 색상 인텐트 컨테이너(Pro 박스·위험 구역)에 과확장했으나 canvas는 neutral 전용. 전체 per-token 설명(E+)은 이 실수를 막아 **E+(0.37%) < EC(0.75%)**. → **핀포인트 힌트로 지배적 실패의 ~65%를 닫지만, 부분 설명은 새 과확장 환각을 유발.**
 5. **설계 함의** — 설명 없는 둘 중에서는 오히려 **E−(1.70%) > PF(0.85%)**. property-first는 canvas/surface 구분이 없어(레이아웃·컴포넌트 모두 `surface.neutral.*`) **그 실수를 할 수조차 없으므로** 표현력이 낮아 역설적으로 안전.
 
 > 결론: 토큰 체계의 표현력(canvas 레이어 등)은 **설명과 짝을 이룰 때만** 가치를 가진다. 오용률의 핵심 변수는 **설명**이며, 네이밍 표면(순서 · step 어휘)은 거의 무관하다. canvas/surface 구분 같은 **핀포인트 힌트는 큰 폭 개선**을 주지만, 경계를 명시하지 않은 부분 설명은 과확장 환각을 부르므로 **완전한 per-token 설명이 가장 안전**하다.
@@ -154,7 +154,7 @@ pnpm dev          # 또는 PORT=3300 next dev -p 3300
 # 생성: 중립 스펙 + 토큰목록을 Sonnet 4.6에 주입 (블라인드)
 #   PF  → eval/inputs/tokens-property-first-nodesc.md     (이름만)
 #   E−  → eval/inputs/tokens-intent-first-nodesc.md         (이름만)
-#   EC  → eval/inputs/tokens-intent-first-canvas-hint.md     (이름만 + canvas/surface 구분 설명만)
+#   EC  → eval/inputs/tokens-intent-first-canvas-hint.md     (이름만 + canvas/surface 구분 힌트만, per-token 설명 없음)
 #   E+  → eval/inputs/tokens-intent-first-desc.md            (이름+설명)
 #   ES  → eval/inputs/tokens-intent-first-stepnames-desc.md  (이름+설명, step 어휘 변경)
 #   INV → eval/inputs/tokens-intent-first-inverse-desc.md    (slot-first 이름+설명)
