@@ -1,0 +1,9 @@
+{
+  "cell": "ES", "page": "billing", "run": 2,
+  "total_usages": 129,
+  "slot": 0, "intent": 0, "fg_text": 0, "hardcode": 0, "hallucination": 0,
+  "misuse_count": 0, "misuse_rate": 0.0,
+  "removed_false_positives": 2,
+  "verify_notes": "시맨틱 컬러 토큰 129건 전수 집계. ①slot: 레이아웃 배경은 neutral.canvas.*(sidebar canvas.01+dark클래스, 카드 canvas.02, 페이지 canvas.01, 테이블헤더/짝수행 canvas.01) 전부 canvas 계열 사용. primary.surface.default=Pro 카드 컴포넌트 배경(desc 허용), critical.surface.default=결제 실패 행·미결제 카드(spec 명시), neutral.surface.transparent·default=버튼/고스트 전용 — 슬롯 오용 없음. 거짓양성 2건 제거: (a) neutral.fill.default(Free 현재 플랜 버튼 bg, opacity:0.38 비활성 처리, fill desc '비활성 영역 채움' 명시); (b) neutral.surface.default(카드 아트 장식 블록, desc '정적 표시/장식 블록' 명시). ②intent: 결제완료=positive, 결제실패=critical(fill), 처리중=warning, 환불완료=info, 예정=info, 만료경고=warning, Pro카드=primary, Pro Check=primary.icon, Free/Enterprise Check=positive.icon, 로그아웃/삭제=critical, 미결제금액=critical — 정답표 전항목 일치. ③fg/text: 아이콘 요소 전부 .icon.* 토큰, 텍스트 요소 전부 .text.* 토큰, inverse.text.default는 fill.default 배경 위에만 사용 — 혼용 없음. ④hardcode: 색상 하드코딩 없음. ⑤hallucination: 모든 사용 토큰이 tokens-intent-first-stepnames-desc.md 목록 내 존재 확인.",
+  "details": []
+}

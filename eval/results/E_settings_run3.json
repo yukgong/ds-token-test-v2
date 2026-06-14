@@ -1,0 +1,16 @@
+{
+  "cell": "E",
+  "page": "settings",
+  "run": 3,
+  "total_usages": 199,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0000,
+  "removed_false_positives": 0,
+  "verify_notes": "199개 토큰 사용처 전수 검토. 레이아웃(사이드바·메인) neutral.canvas.01, 카드 neutral.canvas.02 — layer 규칙 OK. intent 정답표 전 항목 일치(primary/critical/info/positive/warning 모두 정상). 모든 아이콘 요소에 *.icon.base, 텍스트 요소에 *.text.* 사용 — fg_text 오용 없음. 하드코딩 없음. 환각 없음(35개 고유 토큰 모두 tokens-intent-first-desc.md 내 존재). 토글 핸들 neutral.canvas.01 사용은 모호→정상 처리. 비활성 입력·체크박스는 neutral+opacity:0.38 정상 처리. 이전 채점파일(run3)의 fg_text 3건 플래그는 오류 — 실제 L98·L113·L128 코드에는 neutral.icon.base가 올바르게 사용됨.",
+  "details": []
+}

@@ -1,0 +1,38 @@
+{
+  "cell": "EN",
+  "page": "notifications",
+  "run": 2,
+  "total_usages": 169,
+  "slot": 3,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 3,
+  "misuse_rate": 0.0178,
+  "removed_false_positives": 0,
+  "verify_notes": "3건 모두 confirm. ① L31 헤더 backgroundColor=neutral.surface.base: layer 규칙상 레이아웃 배경에 canvas 계열 필요, surface 사용=slot 오용. ② L129 borderBottomColor=primary.fill.base: border* 속성→border 토큰 규칙 위반, fill은 background 속성 전용=slot 오용. ③ L133 동일 css() 내 borderBottomColor 재선언에도 동일 fill 사용=동일 slot 오용 반복. step-free 규칙은 canvas layer step(01/02/03) 한정이므로 border↔fill slot 판정에 무관. intent·fg_text·hardcode·hallucination 0. 읽지않음 카드=primary.surface.base, 읽음 카드=neutral.surface.base 정확. 역할별 강조선·아이콘·뱃지 intent 일치. 알림⑦⑧ 읽음 뱃지=neutral 정확. inverse.text.base는 fill.base 위 전경으로 정확.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "L31 <header> backgroundColor",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (레이아웃 배경=canvas 계열)",
+      "note": "헤더는 레이아웃 요소. layer 규칙상 레이아웃 배경에 canvas 아닌 surface 사용=slot 오용. test-prompt L94 '헤더=neutral.canvas.01 또는 02' 정답표 근거. step-free=canvas step 자유이나 canvas 계열 자체 미사용이 오류."
+    },
+    {
+      "type": "slot",
+      "location": "L129 활성 탭 borderBottomColor (1차 선언)",
+      "used": "primary.fill.base",
+      "should": "primary.border.base (또는 primary.border.high)",
+      "note": "CSS borderBottomColor 속성에 fill 토큰 사용. 토큰 선택 규칙(tokens L14): border* 속성→border 슬롯 전용. fill은 background·backgroundColor·bg 전용."
+    },
+    {
+      "type": "slot",
+      "location": "L133 활성 탭 borderBottomColor (2차 중복 선언)",
+      "used": "primary.fill.base",
+      "should": "primary.border.base (또는 primary.border.high)",
+      "note": "동일 css() 객체 내 borderBottomColor 중복 선언(border:'none' 후 borderBottom:'2px solid' 재선언). 동일 slot 오용 반복. 실질 적용값이 이 선언이므로 독립 카운트."
+    }
+  ]
+}

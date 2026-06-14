@@ -1,0 +1,10 @@
+node_modules
+dist
+.next
+styled-system
+styled-system-property-first
+styled-system-intent-first
+styled-system-intent-first-slotfirst
+styled-system-intent-first-stepnames
+.turbo
+*.tsbuildinfo

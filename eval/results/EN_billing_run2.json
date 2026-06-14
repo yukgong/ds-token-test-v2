@@ -1,0 +1,31 @@
+{
+  "cell": "EN",
+  "page": "billing",
+  "run": 2,
+  "total_usages": 191,
+  "slot": 2,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 2,
+  "misuse_rate": 0.0105,
+  "removed_false_positives": 1,
+  "verify_notes": "1차 3건 중 1건 거짓양성 제거. L82 neutral.fill.base(nav 활성 배경)→reject: E-nodesc 버전에서 fill 슬롯 제한('토글/트랙 전용')은 desc 버전 설명에만 존재하며, 토큰 목록 슬롯 매칭 규칙은 backgroundColor→canvas/surface/fill 모두 허용으로 명시함. 확인된 오용 2건: L88 inverse.icon.base + L92 inverse.text.base(토큰 목록 반전 표면 처리 규칙이 '.dark 내부에서 neutral.icon/text 등 일반 토큰을 그대로 쓰면 자동 전환된다'고 명시→inverse 사용은 규칙 위반, .dark에서 흑색 반전으로 스펙 '밝은 텍스트' 요건 충족 불가).",
+  "details": [
+    {
+      "type": "slot",
+      "location": "L88 — 사이드바 활성 네비 항목 CreditCard 아이콘 color",
+      "used": "inverse.icon.base",
+      "should": "neutral.icon.base — dark 컨텍스트 내부 아이콘에는 일반 neutral.icon이 정답",
+      "note": "토큰 목록 반전 표면 처리 규칙: '.dark 내부에서 neutral.icon 등 일반 토큰을 그대로 쓰면 값이 자동으로 다크로 전환된다'고 명시. inverse 토큰은 'fill.base 위 반대색' 용도로 별도 정의됨. .dark 환경에서 inverse.icon.base는 흑색으로 반전되어 어두운 배경 위 시인성 불량 — slot 오용."
+    },
+    {
+      "type": "slot",
+      "location": "L92 — 사이드바 활성 네비 항목 '결제 내역' 텍스트 color",
+      "used": "inverse.text.base",
+      "should": "neutral.text.base — dark 컨텍스트 내부 텍스트에는 일반 neutral.text가 정답",
+      "note": "토큰 목록 반전 표면 처리 규칙: '.dark 내부에서 neutral.text 등 일반 토큰을 그대로 쓰면 값이 자동으로 다크로 전환된다'고 명시. .dark 환경에서 inverse.text.base는 흑색으로 반전되어 스펙 L10 '밝은 텍스트' 요건 위반 — slot 오용."
+    }
+  ]
+}

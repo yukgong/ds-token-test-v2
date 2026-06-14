@@ -1,0 +1,31 @@
+{
+  "cell": "PF",
+  "page": "notifications",
+  "run": 2,
+  "total_usages": 149,
+  "slot": 2,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 2,
+  "misuse_rate": 0.0134,
+  "removed_false_positives": 0,
+  "verify_notes": "2건 모두 confirm. border.neutral.default를 height:1px 디바이더 div의 backgroundColor에 사용(L265, L1273). border.* 토큰은 {slot}.{intent}.{step} 구조에서 border-color CSS 속성 전용 슬롯이며, backgroundColor에는 surface.neutral.* 계열이 정답 — 룰북 slot 정의('잘못된 CSS 속성/역할에 사용') 직접 해당. 거짓양성 없음.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "page.tsx:265",
+      "used": "border.neutral.default",
+      "should": "surface.neutral.default 또는 surface.neutral.subtle (배경 계열)",
+      "note": "디바이더(height:1px div) backgroundColor에 border.* 계열 토큰 사용. border 슬롯은 border-color 속성 전용 — 룰북 slot 정의 '잘못된 CSS 속성/역할에 사용'"
+    },
+    {
+      "type": "slot",
+      "location": "page.tsx:1273",
+      "used": "border.neutral.default",
+      "should": "surface.neutral.default 또는 surface.neutral.subtle (배경 계열)",
+      "note": "디바이더(height:1px div) backgroundColor에 border.* 계열 토큰 사용. border 슬롯은 border-color 속성 전용 — 룰북 slot 정의 '잘못된 CSS 속성/역할에 사용'"
+    }
+  ]
+}

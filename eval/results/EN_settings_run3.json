@@ -1,0 +1,24 @@
+{
+  "cell": "EN",
+  "page": "settings",
+  "run": 3,
+  "total_usages": 199,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.005,
+  "removed_false_positives": 0,
+  "verify_notes": "사이드바에 dark 클래스 오적용(스펙: 라이트 설정 메뉴)은 토큰 사용처 단위가 아니므로 집계 제외. inverse.text.base를 토글 핸들 backgroundColor에 사용(text 슬롯→background 속성 slot mismatch) 1건 계상 — 검증 confirm(거짓양성 없음). 환각 없음, intent/fg_text/hardcode 없음.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "line 839 — 토글 핸들(흰 원) backgroundColor",
+      "used": "inverse.text.base",
+      "should": "inverse 계열 background 토큰(목록에 없으므로 neutral.surface.base 또는 구조 변경 필요)",
+      "note": "inverse.text.base는 text 슬롯이며 CSS color 속성 전용. backgroundColor에 text 슬롯 토큰을 사용하는 것은 slot mismatch. 토큰 목록(tokens-intent-first-nodesc.md)에서 inverse 계열은 inverse.text.base·inverse.icon.base 두 개(둘 다 전경 전용)뿐으로, background용 inverse 토큰이 없음. 적대적 검증에서 confirm."
+    }
+  ]
+}

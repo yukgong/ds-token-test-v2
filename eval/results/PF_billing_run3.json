@@ -1,0 +1,16 @@
+{
+  "cell": "PF",
+  "page": "billing",
+  "run": 3,
+  "total_usages": 111,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 111건 검토. 환각 없음(모든 토큰 목록 대조 통과). slot 없음(fill.*→backgroundColor, border.*→borderColor, text.*→color, icon.*→color 모두 적절). intent 없음(처리중=warning, 환불완료=info, 결제완료=positive, 결제실패=critical, Pro전반=brand 모두 정답표 일치). fg_text 없음(icon↔text 혼용 없음). hardcode 없음(인라인 style 미사용, hex/rgb 없음).",
+  "details": []
+}

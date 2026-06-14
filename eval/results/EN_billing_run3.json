@@ -1,0 +1,16 @@
+{
+  "cell": "EN",
+  "page": "billing",
+  "run": 3,
+  "total_usages": 190,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0000,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 190건 검토. 사이드바: dark 클래스 올바르게 적용(L31), neutral.canvas.03 배경 명시(L37). 활성 네비 항목 배경 neutral.fill.base(L76)는 작은 컴포넌트 수준으로 허용. 처리 중=warning(L811), 환불 완료=info(L824), Pro Check=primary(L362), Free/Enterprise Check=positive(L251, L451) 전부 정답표 일치. hardcode·hallucination·fg_text 오용 없음. 오용 0건.",
+  "details": []
+}

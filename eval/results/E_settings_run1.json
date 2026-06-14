@@ -1,0 +1,24 @@
+{
+  "cell": "E",
+  "page": "settings",
+  "run": 1,
+  "total_usages": 196,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.0051,
+  "removed_false_positives": 0,
+  "verify_notes": "[적대적 검증 2026-06-14] 1차 플래그 1건 재검토: L823 inverse.text.base → backgroundColor(토글 핸들 흰 원형) CONFIRM. 토큰 설명 '진한 채움용 배경색 위에 얹는 글자에 사용'으로 color 속성 전용 명시, 슬롯 규칙 2단계에서 backgroundColor는 canvas/surface/fill만 허용 — text 슬롯 배제. 시각적 흰색 값이 맞더라도 slot mismatch는 값 우연 일치와 무관. 올바른 선택: neutral.fill.high(배경과 완전히 반대되는 채움) 등. 거짓양성 없음, misuse_count=1 유지.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "page.tsx:823 / 토글 핸들 원형 배경(2단계 인증 토글 켜진 상태)",
+      "used": "inverse.text.base",
+      "should": "backgroundColor에는 canvas/surface/fill 계열 토큰 사용 필요. neutral.fill.high(배경과 완전히 반대되는 채움 색상) 또는 neutral.canvas.01~03 등.",
+      "note": "inverse.text.base 설명: '진한 채움용 배경색 위에 얹는 글자에 사용' — color 속성 전용. 슬롯 규칙 2단계: backgroundColor → canvas/surface/fill 선택, text 슬롯 미포함. 시각적으로 흰색이어도 슬롯 규칙 위반. CONFIRM."
+    }
+  ]
+}

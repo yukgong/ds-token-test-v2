@@ -1,0 +1,24 @@
+{
+  "cell": "IV",
+  "page": "settings",
+  "run": 2,
+  "total_usages": 201,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.005,
+  "removed_false_positives": 0,
+  "verify_notes": "[2차 적대적 검증] L759 slot mismatch confirm: inverse.text.base는 토큰 목록 상 '진한 채움용 배경색 위에 얹는 글자에 사용'하는 text 슬롯 전용 토큰. CSS backgroundColor에 적용은 slot mismatch 확정. L28 dark 클래스(사이드바): 정답표 L108 '설정 메뉴는 라이트, dark 클래스 불필요'로 시각적 오류이나 룰북 채점 차원(slot/intent/fg_text/hardcode/hallucination) 어디에도 해당 없는 CSS 클래스 오용 → 비채점 유지. 위험 구역 카드 surface.critical.base(L1129): 정답표 critical 명시 → 정상. 신규 오용 탐색 없음. 1차 판정 결과 그대로 확정.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "L759 — 카드4 보안 설정 켜진 토글 핸들(흰 원형) backgroundColor",
+      "used": "inverse.text.base",
+      "should": "토큰 목록에 배경용 inverse 토큰 없음 — 흰 원형 핸들은 inverse.text.base 대신 하드코딩(#fff) 또는 canvas.neutral.01 등 배경 슬롯 토큰을 사용해야 함",
+      "note": "inverse.text.base는 '진한 채움용 배경색 위에 얹는 글자에 사용'하는 text 슬롯 전용 토큰. CSS backgroundColor 속성에 적용하는 것은 slot mismatch."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "cell": "EN",
+  "page": "billing",
+  "run": 1,
+  "total_usages": 205,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.0049,
+  "removed_false_positives": 0,
+  "verify_notes": "결제 카드 아트 배경(L493)에 neutral.fill.base 사용 → layer 정답표(test-prompt-billing.md L96)에서 neutral.canvas.03 정답. canvas 계열이 아닌 fill 계열 사용 → slot 오용 1건 confirm. 거짓양성 없음. 나머지 전체 정상: dark 클래스 사이드바(L29) 적용 OK, inverse.text.base 7건 모두 fill.base 위 전경 OK, 상태 뱃지 intent 전량 정답표 일치(처리중=warning, 환불완료=info, 결제완료=positive, 결제실패=critical), 환각 0건, 목록 외 토큰 0건.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "L493: 결제 카드 아트 배경",
+      "used": "neutral.fill.base",
+      "should": "neutral.canvas.* (canvas 계열 임의 step)",
+      "note": "결제 카드 아트는 레이아웃 layer 정답표(test-prompt-billing.md L96)에서 neutral.canvas.03 정답(step 자유이나 canvas 계열 필수). fill 계열은 레이아웃 배경에 불가. layer 규칙: canvas 아닌 fill → slot 오용. confirm."
+    }
+  ]
+}

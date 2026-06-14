@@ -1,0 +1,24 @@
+{
+  "cell": "ES", "page": "notifications", "run": 1,
+  "total_usages": 172,
+  "slot": 2, "intent": 0, "fg_text": 0, "hardcode": 0, "hallucination": 0,
+  "misuse_count": 2, "misuse_rate": 0.0116,
+  "removed_false_positives": 0,
+  "verify_notes": "시맨틱 컬러 토큰 172건 전수 집계. 환각 0(모든 토큰이 유효 목록에 존재). 하드코딩 0. fg/text 혼용 0(아이콘은 *.icon.default, 텍스트는 *.text.* 일관 사용). intent 0: 읽지 않음 카드 배경=primary.surface.default(정답), 읽음 카드 배경=neutral.canvas.01(정답), 알림①~⑤ 강조선·아이콘·뱃지 각각 positive/critical/warning/info/primary(정답), 알림⑦⑧ 읽음 상태 뱃지=neutral(정답), 카운터 카드·활성 탭·카테고리 선택 모두 정답. slot 오용 2건: L268·L1140에서 구분선용 1px div에 bg:'neutral.border.subtle' 사용 — border 슬롯을 background CSS 속성에 적용한 slot mismatch(올바른 패턴은 border CSS 속성에 neutral.border.subtle 사용, 또는 bg에 neutral.fill.default 사용). 거짓양성 제거 없음(해당 패턴은 desc가 '구분선' 용도임을 확인했으나 CSS slot 규칙상 border 토큰은 borderColor 속성에만 허용).",
+  "details": [
+    {
+      "type": "slot",
+      "used": "neutral.border.subtle",
+      "should": "neutral.fill.default (bg에 쓸 경우) 또는 borderColor 속성으로 교체",
+      "location": "L268 — 좌측 필터 사이드바 내 구분선 div (h:'[1px]', bg:'neutral.border.subtle')",
+      "note": "border 슬롯 토큰을 background CSS 속성(bg)에 사용. 구분선 의미는 올바르나 CSS 속성-슬롯 불일치."
+    },
+    {
+      "type": "slot",
+      "used": "neutral.border.subtle",
+      "should": "neutral.fill.default (bg에 쓸 경우) 또는 borderColor 속성으로 교체",
+      "location": "L1140 — 알림 목록 하단 구분선 div (h:'[1px]', bg:'neutral.border.subtle')",
+      "note": "border 슬롯 토큰을 background CSS 속성(bg)에 사용. 동일 패턴 반복."
+    }
+  ]
+}

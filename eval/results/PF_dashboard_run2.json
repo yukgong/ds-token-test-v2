@@ -1,0 +1,24 @@
+{
+  "cell": "PF",
+  "page": "dashboard",
+  "run": 2,
+  "total_usages": 250,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.004,
+  "removed_false_positives": 0,
+  "verify_notes": "[검증 완료] 거짓양성 없음. slot 오용 1건 confirm: border.neutral.default는 토큰 목록에서 slot=border로 명시된 토큰이며, PF 토큰셋에 fill.neutral(배경 전용)이 별도로 존재함에도 backgroundColor에 border.* 토큰을 사용한 것은 slot mismatch 확정. 룰북 §2 정의에 부합.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "page.tsx:365",
+      "used": "border.neutral.default",
+      "should": "fill.neutral 또는 surface.neutral.* (backgroundColor 슬롯)",
+      "note": "세로 구분선 div의 backgroundColor에 border.* 계열 토큰을 사용. PF 토큰셋에 fill.neutral이 존재하므로 대안이 명확함. border.* 토큰은 borderColor CSS 속성 전용이며 배경색 슬롯에 사용하면 slot mismatch. 룰북 §2: '존재하는 토큰을 잘못된 CSS 속성/역할에 사용' 해당."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "cell": "E",
+  "page": "dashboard",
+  "run": 1,
+  "total_usages": 178,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.0056,
+  "removed_false_positives": 0,
+  "verify_notes": "[적대적 검증 2026-06-14] L244 slot confirm 유지. backgroundColor에 neutral.border.base 사용 — 토큰 선택 2단계 원칙상 backgroundColor는 canvas/surface/fill만 허용, border 계열은 borderColor 전용이므로 slot 오용 확정(거짓양성 아님). 추가 오용 없음: 전수 재확인(backgroundColor 전건 canvas/surface/fill/overlay, color 전건 text/icon, borderColor 전건 border, hardcode 0, hallucination 0 — 46개 고유토큰 전부 목록 내). 1차 거짓양성 제거(툴팁 neutral.fill.high)는 올바름 유지 — desc에서 소형 떠있는 컴포넌트 진한채움 명시. removed_false_positives=0(1차에서 이미 소거된 건, 추가 소거 없음).",
+  "details": [
+    {
+      "type": "slot",
+      "location": "page.tsx:244/dividerCls",
+      "used": "neutral.border.base",
+      "should": "neutral.fill.base",
+      "note": "헤더 세로 구분선(1px 폭 div) backgroundColor에 border 계열 토큰 사용. 2단계 규칙: backgroundColor는 canvas/surface/fill만 허용, border 계열은 borderColor 전용. 의미 계열(neutral)은 정확하나 CSS 속성 슬롯 불일치. slot 오용 확정. 정답: neutral.fill.base(트랙/비활성 영역 채움 — 구분선 채움에 부합)."
+    }
+  ]
+}

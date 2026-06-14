@@ -1,0 +1,24 @@
+{
+  "cell": "IV",
+  "page": "settings",
+  "run": 3,
+  "total_usages": 200,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.005,
+  "removed_false_positives": 0,
+  "verify_notes": "2차 적대적 재검증. L709 canvas.neutral.02(토글 핸들 backgroundColor) — canvas 계열은 토큰 설명상 '독립된 정보 블록을 형성하는 일반적인 컨테이너의 기본 레이아웃 배경색(카드·패널·박스 등)'이며, 토글 핸들(20×20px 원형 컴포넌트 내부 요소)은 컨테이너가 아니므로 slot 오용 confirm. 정답은 surface.neutral.base(입력창·버튼 등 일반 컴포넌트의 기본 배경색). 1차에서 제거한 FP(dark 클래스 사이드바)는 이미 제거 완료이며 이번 재검증에서 추가 거짓양성 없음(removed_false_positives=0). 비활성 입력 surface.neutral.high·포커스 border.primary.highest·fill 위 inverse.text.base 체크마크 모두 정상 유지.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "L709 — 카드4 보안 설정 켜진 토글 핸들(흰 원형) backgroundColor",
+      "used": "canvas.neutral.02",
+      "should": "surface.neutral.base (입력창·버튼 등 일반 컴포넌트의 기본 배경색). canvas 계열은 카드·패널·박스 등 레이아웃 배경 전용이므로 컴포넌트 내부 소형 원형 요소에는 사용 불가.",
+      "note": "canvas.neutral.02 설명: '독립된 정보 블록을 형성하는 일반적인 컨테이너의 기본 레이아웃 배경색. 카드, 패널, 박스 등'. 토글 핸들은 컨테이너가 아닌 컴포넌트 내부 소형 요소이므로 slot 오용 confirm."
+    }
+  ]
+}

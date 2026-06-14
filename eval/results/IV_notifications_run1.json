@@ -1,0 +1,16 @@
+{
+  "cell": "IV",
+  "page": "notifications",
+  "run": 1,
+  "total_usages": 91,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0000,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 집계 91건(L430 단일 줄에 surface.primary.base+canvas.neutral.01 2토큰 포함). 헤더 배경 canvas.neutral.01(OK), 사이드바 배경 canvas.neutral.02(step-free), 알림목록 배경 canvas.neutral.02(step-free). 읽지않음 카드 배경 surface.primary.base(정답표 primary OK), 읽음 카드 배경 canvas.neutral.01(정답표 neutral OK). 강조선 fill.{positive/critical/warning/info/primary}.base(5종 정답). 카운터카드 3종(primary/critical/warning) surface+border+icon+text 일치. 활성탭 text+border.primary OK, 카테고리 전체 fill.primary.base+inverse.text.base OK. 뱃지 스타일 맵 6종 모두 정답표 일치. 읽음 Card6 뱃지=positive-outline(OK), Card7 뱃지=neutral-outline(OK, 정답표 ⑦처리됨=neutral), Card8 뱃지=neutral-outline(OK, 정답표 ⑧안내=neutral). inverse.text.base는 fill.{critical/primary}.base 위 텍스트에만 사용(OK). surface.neutral.high는 hover 전용으로만 사용(OK). 오용 0건.",
+  "details": []
+}

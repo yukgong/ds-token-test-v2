@@ -1,0 +1,16 @@
+{
+  "cell": "PF",
+  "page": "settings",
+  "run": 1,
+  "total_usages": 196,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 집계 196건. 환각 없음(모든 토큰이 tokens-property-first-nodesc.md 목록에 존재). slot 오용 없음(fill.* → backgroundColor, border.* → borderColor, text.* → color/text컨텍스트, icon.* → icon color 컨텍스트로 일관). fg_text 오용 없음(아이콘에 icon.*, 텍스트에 text.* 일관 적용). intent 오용 없음 — 정답표 전 항목 일치: 활성메뉴·아바타·저장버튼·현재플랜·토글·세션①·체크박스=primary(brand), 위험구역 계열=critical, 안내배너=info, 포커스=primary+focusRing, 오류=critical, 성공=positive, 경고배너=warning, ShieldCheck·활성화됨뱃지=positive, 비활성입력·필수체크박스=neutral+opacity. SVG path stroke='white' 4건은 SVG 마크업 속성으로 css() 토큰 범위 외이고 hex/rgb·인라인style 조건 미해당 → 정상 처리. disabled 요소: neutral 기반 + opacity:0.5 = 정상(전용 disabled 색 아님). hardcode 없음.",
+  "details": []
+}

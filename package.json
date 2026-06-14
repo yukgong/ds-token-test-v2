@@ -1,0 +1,38 @@
+{
+  "name": "ds-token-test",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "prepare": "pnpm codegen",
+    "codegen": "pnpm codegen:main && pnpm codegen:property-first && pnpm codegen:intent-first && pnpm codegen:stepnames",
+    "codegen:main": "panda codegen --config panda.config.ts",
+    "codegen:property-first": "panda codegen --config panda.config.property-first.ts",
+    "codegen:intent-first": "panda codegen --config panda.config.intent-first.ts",
+    "codegen:stepnames": "panda codegen --config panda.config.intent-first-stepnames.ts",
+    "cssgen": "panda cssgen --config panda.config.ts && panda cssgen --config panda.config.property-first.ts && panda cssgen --config panda.config.intent-first.ts && panda cssgen --config panda.config.intent-first-stepnames.ts",
+    "cssgen:stepnames": "panda cssgen --config panda.config.intent-first-stepnames.ts",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ark-ui/react": "^5.37.0",
+    "@park-ui/panda-preset": "^0.43.1",
+    "lucide-react": "^1.17.0",
+    "next": "14.2.5",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "1.8.2",
+    "@pandacss/token-dictionary": "1.8.2",
+    "@pandacss/types": "1.8.2",
+    "@types/node": "^22.14.1",
+    "@types/react": "19.0.2",
+    "@types/react-dom": "19.0.2",
+    "playwright": "^1.60.0",
+    "tsx": "^4.22.4",
+    "typescript": "~5.8.3"
+  }
+}

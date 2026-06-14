@@ -1,0 +1,122 @@
+{
+  "cell": "EN",
+  "page": "dashboard",
+  "run": 1,
+  "total_usages": 234,
+  "slot": 15,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 15,
+  "misuse_rate": 0.0641,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 재검증: 15건 전부 confirm. 거짓양성 0. canvas layer 감사 — 통계카드(4)/리소스카드(3)/테이블외곽/헤더바/테이블헤더행/짝수행/홀수행/토글패널 = 총 13건 모두 neutral.surface.* 사용(canvas 계층 미사용 = slot 오용, step-free 규칙 적용, step 불일치 아닌 계열 자체 오류). divider bg=border.base(bg에 border계열) 1건 confirm. filled버튼 hover=surface.high(fill→surface 계열 역행) 1건 confirm. intent/fg_text/hardcode/hallucination 0건 유지.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "L233 header bar bg",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (레이아웃 배경 = canvas 계층)",
+      "note": "헤더 바는 레이아웃 배경 요소. surface 대신 canvas 사용해야 함"
+    },
+    {
+      "type": "slot",
+      "location": "L619 stats card 1 bg",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (통계 카드 컨테이너 = canvas 계층)",
+      "note": "통계 카드 컨테이너는 레이아웃 배경 요소(정답표 명시). surface 대신 canvas 사용해야 함"
+    },
+    {
+      "type": "slot",
+      "location": "L658 stats card 2 bg",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (통계 카드 컨테이너 = canvas 계층)",
+      "note": "통계 카드 컨테이너는 레이아웃 배경 요소(정답표 명시). surface 대신 canvas 사용해야 함"
+    },
+    {
+      "type": "slot",
+      "location": "L697 stats card 3 bg",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (통계 카드 컨테이너 = canvas 계층)",
+      "note": "통계 카드 컨테이너는 레이아웃 배경 요소(정답표 명시). surface 대신 canvas 사용해야 함"
+    },
+    {
+      "type": "slot",
+      "location": "L736 stats card 4 bg",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (통계 카드 컨테이너 = canvas 계층)",
+      "note": "통계 카드 컨테이너는 레이아웃 배경 요소(정답표 명시). surface 대신 canvas 사용해야 함"
+    },
+    {
+      "type": "slot",
+      "location": "L784 resource card 1 (CPU) bg",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (리소스 카드 컨테이너 = canvas 계층)",
+      "note": "리소스 카드 컨테이너는 레이아웃 배경 요소(정답표 명시). surface 대신 canvas 사용해야 함"
+    },
+    {
+      "type": "slot",
+      "location": "L821 resource card 2 (Memory) bg",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (리소스 카드 컨테이너 = canvas 계층)",
+      "note": "리소스 카드 컨테이너는 레이아웃 배경 요소(정답표 명시). surface 대신 canvas 사용해야 함"
+    },
+    {
+      "type": "slot",
+      "location": "L858 resource card 3 (Disk) bg",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (리소스 카드 컨테이너 = canvas 계층)",
+      "note": "리소스 카드 컨테이너는 레이아웃 배경 요소(정답표 명시). surface 대신 canvas 사용해야 함"
+    },
+    {
+      "type": "slot",
+      "location": "L896 table outer container bg",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (테이블 컨테이너 = canvas 계층)",
+      "note": "테이블 외부 컨테이너는 레이아웃 배경 요소(정답표 명시). surface 대신 canvas 사용해야 함"
+    },
+    {
+      "type": "slot",
+      "location": "L1101 table header row bg",
+      "used": "neutral.surface.high",
+      "should": "neutral.canvas.* (테이블 헤더 행 = canvas 계층)",
+      "note": "테이블 헤더 행은 레이아웃 배경 요소(정답표 명시). surface.high 대신 canvas 사용해야 함"
+    },
+    {
+      "type": "slot",
+      "location": "L1133 table even row bg",
+      "used": "neutral.surface.high",
+      "should": "neutral.canvas.* (테이블 짝수행 줄무늬 = canvas 계층)",
+      "note": "테이블 짝수행 줄무늬는 레이아웃 배경 요소(정답표 명시). surface.high 대신 canvas 사용해야 함"
+    },
+    {
+      "type": "slot",
+      "location": "L1133 table odd row bg",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (테이블 홀수행 = canvas 계층)",
+      "note": "테이블 홀수행 배경은 레이아웃 배경 요소(정답표 명시). surface.base 대신 canvas 사용해야 함"
+    },
+    {
+      "type": "slot",
+      "location": "L1261 toggle panel bg",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (알림 토글 패널 컨테이너 = canvas 계층)",
+      "note": "토글 패널 컨테이너는 레이아웃 배경 요소(정답표 명시). surface 대신 canvas 사용해야 함"
+    },
+    {
+      "type": "slot",
+      "location": "L437 vertical divider bg",
+      "used": "neutral.border.base",
+      "should": "neutral.fill.base 또는 neutral.surface.high (bg 속성에는 canvas/surface/fill 계열)",
+      "note": "border 계열 토큰을 bg 속성에 사용. 세로 구분선을 div+bg로 구현 시 fill/surface 토큰 사용해야 함"
+    },
+    {
+      "type": "slot",
+      "location": "L456 '새 배포' button _hover bg",
+      "used": "primary.surface.high",
+      "should": "primary.fill.base (CTA filled 버튼 hover = fill 계열 유지)",
+      "note": "filled CTA 버튼(primary.fill.base) hover에 surface.high를 사용. 진한 fill → 연한 surface 전환으로 시각적 역행. fill 계열 hover 토큰이 없으므로 fill.base 유지 권장"
+    }
+  ]
+}

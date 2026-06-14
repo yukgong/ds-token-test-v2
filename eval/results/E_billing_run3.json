@@ -1,0 +1,16 @@
+{
+  "cell": "E",
+  "page": "billing",
+  "run": 3,
+  "total_usages": 134,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0000,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 집계 134건(grep 결과 134토큰, 삼항 backgroundColor 3토큰 포함). 사이드바: dark 클래스 정상 적용(L26 aside에 className='dark ...') — 사이드바 배경 neutral.canvas.02(L31) + 내부 neutral.icon/text.base → dark 클래스로 자동 다크값 전환. 활성 메뉴(결제 내역): overlay.lighten.hover(L79) 위 neutral.icon.base(L83) + neutral.text.base(L84) = 진한 배경 컴포넌트 활성 상태 정답. Pro 카드: primary 계열 일관성(surface.base/border.high/text.base/icon.base/fill.base) 완전 충족. 상태 뱃지 전부 intent 정답표 일치: 결제완료=positive OK, 결제실패=critical solid(fill.base+inverse.text.base) OK, 처리중=warning OK(spec L86), 환불완료=info OK(spec L87). 미결제 카드: critical 계열(surface/border/text/icon/fill) 일관성 충족. 만료 임박 배너: warning 계열(surface/border/icon/text) 정답. 로그아웃: critical.icon.base+critical.text.base 정답. Free/Enterprise Check: positive.icon.base 정답. Pro Check: primary.icon.base 정답. 레이아웃 배경: neutral.canvas.01 메인 배경(L1152), neutral.canvas.02 카드/패널 다수, neutral.canvas.01 테이블 헤더(L848) 모두 OK. 카드 아트 배경(L528) neutral.surface.base: desc '정적 표시/장식 블록의 가장 옅은 기본 배경색'에 부합하는 시각적 장식 컴포넌트 → 거짓양성 제거 규칙 적용 OK(run1·run2 동일 판정). 환각: 모든 토큰이 tokens-intent-first-desc.md 목록 내 존재 확인. 오용 0건.",
+  "details": []
+}

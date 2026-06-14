@@ -1,0 +1,16 @@
+{
+  "cell": "IV",
+  "page": "billing",
+  "run": 1,
+  "total_usages": 180,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0000,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 검토 180건 모두 정상. 사이드바: dark 클래스 국소 적용 + canvas.neutral.02 배경 정확. overlay.lighten.hover 활성 메뉴에 정확 사용. Pro 카드: surface.primary.base/border.primary.high/fill.primary.base/text.primary.base/icon.primary.base 일관 사용(정답표 허용). 배너·뱃지·버튼 위 inverse.text.base 정확. Free/Enterprise Check = icon.positive.base(정답표 일치), Pro Check = icon.primary.base(정답표 일치). 결제 내역 뱃지: 완료=positive, 실패=fill.critical.base+inverse.text.base(solid), 처리 중=warning(정답표 일치), 환불 완료=info(정답표 일치). 만료 배너 warning 3종 일치. 미결제 카드 critical 일관. 예정 뱃지 info 일치. 하드코딩·환각 없음.",
+  "details": []
+}

@@ -1,0 +1,24 @@
+{
+  "cell": "PF",
+  "page": "billing",
+  "run": 2,
+  "total_usages": 119,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 1,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.0084,
+  "removed_false_positives": 0,
+  "verify_notes": "1차 플래그 confirm — ghostIconButtonStyle(L520) text.neutral.muted는 순수 아이콘 버튼(FileText만 포함)에 text 계열 토큰을 사용한 fg_text mismatch. 토큰 목록에 icon.neutral.muted(L46)가 존재하므로 선택 여지 있었음. 거짓양성 없음.",
+  "details": [
+    {
+      "type": "fg_text",
+      "location": "page.tsx:520",
+      "used": "text.neutral.muted",
+      "should": "icon.neutral.muted 또는 icon.neutral.subtle",
+      "note": "ghostIconButtonStyle은 아이콘(FileText)만 포함하는 순수 아이콘 버튼. color에 text.* 계열 토큰을 사용해 아이콘에 text 토큰이 적용됨. 룰북 fg/text mismatch: '아이콘에 text 토큰 사용'에 해당. tokens-property-first-nodesc.md에 icon.neutral.muted 존재(L46) 확인."
+    }
+  ]
+}

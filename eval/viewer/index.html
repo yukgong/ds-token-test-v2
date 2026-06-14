@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>v3 토큰 오용률 — property-first vs E+ (편향 제거)</title>
+<style>
+  :root{--bg:#0e0f13;--panel:#181a21;--line:#2a2d37;--txt:#e6e8ee;--mut:#9aa0ad;
+    --rf:#e5484d;--pf:#30a46c;--e:#0090ff;--en:#8e4ec6;--iv:#f76b15;--es:#d6409f;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo",sans-serif}
+  header{padding:24px 28px;border-bottom:1px solid var(--line)}
+  h1{margin:0 0 4px;font-size:20px}
+  .sub{color:var(--mut);font-size:13px}
+  .wrap{padding:22px 28px;max-width:1500px;margin:0 auto}
+  table.sum{border-collapse:collapse;width:100%;margin-bottom:10px}
+  table.sum th,table.sum td{border:1px solid var(--line);padding:9px 12px;text-align:center}
+  table.sum th{background:var(--panel);color:var(--mut);font-weight:600}
+  table.sum td.arm{text-align:left;font-weight:600}
+  .rate{font-size:20px;font-weight:800}
+  .bar{height:8px;border-radius:4px;background:#222633;overflow:hidden;margin-top:5px}
+  .bar>i{display:block;height:100%}
+  .note{color:var(--mut);font-size:12.5px;margin:14px 0 26px;padding:12px 14px;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+  .note b{color:var(--txt)}
+  .tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+  .tab{padding:7px 14px;border:1px solid var(--line);border-radius:999px;cursor:pointer;color:var(--mut);background:var(--panel)}
+  .tab.on{color:#fff}
+  .tab[data-arm=E].on{background:var(--e);border-color:var(--e)}
+  .tab[data-arm=EN].on{background:var(--en);border-color:var(--en)}
+  .tab[data-arm=ES].on{background:var(--es);border-color:var(--es)}
+  .tab[data-arm=IV].on{background:var(--iv);border-color:var(--iv)}
+  .tab[data-arm=PF].on{background:var(--pf);border-color:var(--pf)}
+  .tab[data-arm=RF].on{background:var(--rf);border-color:var(--rf)}
+  .tab[data-arm=ALL].on{background:#555;border-color:#777}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:18px}
+  .card{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+  .cap{display:flex;justify-content:space-between;align-items:center;padding:10px 13px;border-bottom:1px solid var(--line)}
+  .cap .id{font-weight:700}
+  .pill{font-size:11px;padding:2px 8px;border-radius:999px;color:#fff}
+  .pill.E{background:var(--e)}.pill.PF{background:var(--pf)}.pill.RF{background:var(--rf)}.pill.EN{background:var(--en)}.pill.IV{background:var(--iv)}.pill.ES{background:var(--es)}
+  .cap .r{font-weight:800}
+  .shot{width:100%;display:block;background:#fff;max-height:460px;object-fit:cover;object-position:top;cursor:zoom-in}
+  .meta{padding:10px 13px;font-size:12.5px;color:var(--mut)}
+  .dims{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+  .dim{padding:1px 7px;border:1px solid var(--line);border-radius:5px;font-size:11px}
+  .dim.hit{color:#ffd0d0;border-color:#5b2a2e;background:#2a1416}
+  details{margin-top:6px}
+  summary{cursor:pointer;color:var(--txt)}
+  .det{margin:4px 0;padding:6px 8px;background:#11131a;border-left:2px solid var(--rf);border-radius:3px;font-size:12px}
+  .det .t{color:#ffb4b4;font-family:ui-monospace,Menlo,monospace}
+  .det.excl{border-left-color:#7a7f8c;opacity:.62;background:#0d0f14}
+  .det.excl .t{color:#c7cdd8}
+  .extag{font-size:10px;padding:1px 6px;border-radius:4px;background:#2a2d37;color:#aab;margin-left:4px}
+  .appendix{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+  .appendix h2{font-size:16px;margin:0 0 4px}
+  .appendix .ad{color:var(--mut);font-size:12.5px;margin-bottom:12px}
+  table.apx{border-collapse:collapse;width:100%;font-size:12.5px}
+  table.apx th,table.apx td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}
+  table.apx th{background:var(--panel);color:var(--mut)}
+  table.apx td.tk{font-family:ui-monospace,Menlo,monospace;color:#c7cdd8;white-space:nowrap}
+  a.codelink{color:var(--e);text-decoration:none}
+  .lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:flex-start;justify-content:center;overflow:auto;z-index:9;padding:20px}
+  .lb img{max-width:1200px;width:100%;height:auto;background:#fff}
+  .lb.on{display:flex}
+</style>
+</head>
+<body>
+<header>
+  <h1>v3 토큰 오용률 — 5-arm 비교 (PF · E− · E+ · ES · INV)</h1>
+  <div class="sub">동일 중립 스펙 · Sonnet 4.6 생성·블라인드 채점 · step-free layer · raw 정규화 오용률. PF=property-first 이름만 / E−=intent-first 이름만 / E+=intent-first 이름+설명 / ES=intent-first 이름+설명(step 어휘 변경) / INV=slot-first 이름+설명(셀 E 토큰)</div>
+</header>
+<div class="wrap">
+  <table class="sum" id="sum"></table>
+  <div class="note" id="keynote"></div>
+  <div class="tabs" id="tabs">
+    <span class="tab on" data-arm="ALL">전체</span>
+    <span class="tab" data-arm="PF">PF</span>
+    <span class="tab" data-arm="EN">E−</span>
+    <span class="tab" data-arm="E">E+</span>
+    <span class="tab" data-arm="ES">ES</span>
+    <span class="tab" data-arm="IV">INV</span>
+  </div>
+  <div class="grid" id="grid"></div>
+  <div class="appendix" id="appendix"></div>
+</div>
+<div class="lb" id="lb"><img id="lbimg"></div>
+<script src="data.js?v=5arm-es"></script>
+<script>
+const D=window.DATA, order=D.order||['PF','EN','E','ES','IV'], col={RF:'var(--rf)',PF:'var(--pf)',E:'var(--e)',EN:'var(--en)',ES:'var(--es)',IV:'var(--iv)'};
+// summary table — raw 단일 오용률
+let mx=Math.max(...order.map(a=>D.summary[a].rate));
+let h='<tr><th>arm</th><th>raw 오용률</th><th>cells</th><th>사용횟수</th><th>오용</th><th>slot</th><th>intent</th><th>fg/text</th><th>hardcode</th><th>환각</th></tr>';
+for(const a of order){const s=D.summary[a];
+  h+=`<tr><td class="arm" style="border-left:4px solid ${col[a]}">${s.label}</td>`+
+  `<td><span class="rate" style="color:${col[a]}">${s.rate}%</span><div class="bar"><i style="width:${100*s.rate/mx}%;background:${col[a]}"></i></div></td>`+
+  `<td>${s.cells}</td><td>${s.usages}</td><td>${s.misuse}</td><td>${s.slot}</td><td>${s.intent}</td><td>${s.fg_text}</td><td>${s.hardcode}</td><td>${s.hallucination}</td></tr>`;}
+document.getElementById('sum').innerHTML=h;
+document.getElementById('keynote').innerHTML=
+ `<b>읽는 법.</b> 동일한 중립 스펙(4페이지)으로 5개 토큰 변형안을 Sonnet 4.6이 생성, 코드 기반 블라인드로 채점. <b>raw 정규화 오용률</b> = 오용 ÷ 시맨틱 컬러 토큰 사용 총횟수. layer(canvas)는 <b>step-free</b>(canvas 계열 사용 여부만, 01/02/03 정밀도 미채점). 각 arm × 4페이지 × 3런 = 12셀.`+
+ `<ul style="margin:8px 0 0 0;padding-left:18px">`+
+ `<li><b>PF</b> — property-first 이름만(slot-first 네이밍, 설명 없음 = 자동완성 동등). 별도 토큰 체계.</li>`+
+ `<li><b>E−</b> — intent-first 이름만(설명 없음).</li>`+
+ `<li><b>E+</b> — intent-first 이름+설명. (E−↔E+ = 설명 효과 격리)</li>`+
+ `<li><b>ES</b> — intent-first 이름+설명, <b>셀 E와 동일 토큰·값·순서</b>에서 step 어휘만 교체(muted/subtle/default/strongest/emphasis). (E+↔ES = step 어휘 효과 격리)</li>`+
+ `<li><b>INV</b> — slot-first 이름+설명, <b>셀 E와 동일 토큰·값</b>을 순서만 반전. (E+↔INV = 순서 효과 격리)</li>`+
+ `</ul>`+
+ `<div style="margin-top:8px">결과: `+order.map(a=>`<b style="color:${col[a]}">${a} ${D.summary[a].rate}%</b>(${D.summary[a].misuse}/${D.summary[a].usages})`).join(' · ')+`</div>`;
+// cards
+const grid=document.getElementById('grid');
+function render(arm){
+  const cells=D.cells.filter(c=>arm==='ALL'||c.cell===arm)
+    .sort((a,b)=>order.indexOf(a.cell)-order.indexOf(b.cell)||a.page.localeCompare(b.page)||a.run-b.run);
+  grid.innerHTML=cells.map(c=>{
+    const dims=['slot','intent','fg_text','hardcode','hallucination'].map(k=>
+      `<span class="dim ${c[k]>0?'hit':''}">${k} ${c[k]}</span>`).join('');
+    const det=(c.details||[]).map(d=>`<div class="det"><span style="color:#ffd0d0">[${d.type||d.dimension||''}]</span> <span class="t">${d.used||d.token||''}</span> → ${d.should||d.property||''}<br><span style="color:#888">${d.location||d.where||''}</span> ${d.note?'· '+d.note:''}</div>`).join('');
+    const rate=(100*c.misuse_count/c.total_usages).toFixed(1);
+    return `<div class="card">
+      <div class="cap"><span class="id"><span class="pill ${c.cell}">${c.cell}</span> ${c.page} · run${c.run}</span>
+        <span class="r" style="color:${col[c.cell]}">${rate}%</span></div>
+      <img class="shot" src="${c.shot}" loading="lazy" onclick="zoom('${c.shot}')">
+      <div class="meta">오용 ${c.misuse_count} / 사용 ${c.total_usages}
+        <div class="dims">${dims}</div>
+        <a class="codelink" href="http://localhost:3300${c.code}" target="_blank">▶ 렌더 열기</a> · <span style="color:#666">${c.codepath}</span>
+        ${det?`<details><summary>오용 상세 ${(c.details||[]).length}건</summary>${det}</details>`:''}
+      </div></div>`;}).join('');
+}
+document.getElementById('tabs').onclick=e=>{if(!e.target.dataset.arm)return;
+  [...document.querySelectorAll('.tab')].forEach(t=>t.classList.toggle('on',t===e.target));
+  render(e.target.dataset.arm);};
+// appendix — 오용률에서 제외된 별첨 항목
+(function(){const ap=D.appendix||[]; if(!ap.length)return;
+  let rows=ap.map(x=>`<tr><td><span class="pill ${x.cell}" style="font-size:10px">${x.cell}</span></td><td>${x.page} · run${x.run}</td><td class="tk">${x.token||''}</td><td>${x.property||''}</td><td>${x.note||''}</td></tr>`).join('');
+  document.getElementById('appendix').innerHTML=
+   `<h2>별첨 — 오용률 제외 항목 (${ap.length}건)</h2>`+
+   `<div class="ad"><b>제외 사유:</b> 다크 사이드바(반전 표면, <code>*.surface.inverse</code>) 위 비활성 메뉴·로그아웃의 글자/아이콘에서 <code>.inverse</code> 토큰 미선택 또는 색 누락. 이는 단일 컬러 토큰 차원에서 조정되는 사안이 아니라 (1) 반전 표면 렌더 컨텍스트를 위한 별도 하네스 설정이 필요하고 (2) 컴포넌트 단위에서 통제되는 disabled/inverse 처리이며 (3) arm 간 공정 비교가 어려운 요소이므로, 정규화 오용률 산출에서 제외하고 여기 별첨으로 분리 기록함. (billing·dashboard 사이드바만 어두움 / notifications 사이드바는 라이트라 해당 없음)</div>`+
+   `<table class="apx"><tr><th>arm</th><th>셀</th><th>토큰</th><th>속성</th><th>내용</th></tr>${rows}</table>`;
+})();
+function zoom(s){document.getElementById('lbimg').src=s;document.getElementById('lb').classList.add('on');}
+document.getElementById('lb').onclick=()=>document.getElementById('lb').classList.remove('on');
+render('ALL');
+</script>
+</body>
+</html>

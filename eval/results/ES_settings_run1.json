@@ -1,0 +1,17 @@
+{
+  "cell": "ES", "page": "settings", "run": 1,
+  "total_usages": 199,
+  "slot": 1, "intent": 0, "fg_text": 0, "hardcode": 0, "hallucination": 0,
+  "misuse_count": 1, "misuse_rate": 0.005025,
+  "removed_false_positives": 0,
+  "verify_notes": "시맨틱 컬러 토큰 199개 전수 집계. 오용 1건: 카드4 켜진 토글의 흰 원형 핸들(배경)에 inverse.text.default(텍스트 슬롯)를 backgroundColor로 사용 — 슬롯 불일치. inverse 계열에는 fill/surface 슬롯이 없어 배경 표현에 부적합한 텍스트 슬롯을 선택한 것임. 토큰 설명 '진한 채움용 배경색 위에 얹는 글자에 사용'으로 명확히 텍스트 전용임. 의도(intent) 판정: 전체 정답표 대조 완료, 모든 계열(primary/critical/info/warning/positive/neutral) 일치. 비활성 요소는 neutral+opacity 패턴 준수. 하드코딩/환각 없음. 유효 토큰 36종 모두 목록 내.",
+  "details": [
+    {
+      "type": "slot",
+      "used": "inverse.text.default",
+      "should": "토큰 없음(inverse.fill/* 미존재) — neutral.fill.strongest 또는 하드코딩 없이 대안 선택 필요",
+      "location": "카드4 보안 설정 > 켜진 상태 토글 > 흰 원형 핸들 (line 899)",
+      "note": "inverse.text.default는 텍스트 전용 슬롯(color 속성용)인데 backgroundColor 속성에 사용. 토큰 desc: '진한 채움용 배경색 위에 얹는 글자에 사용'. 배경(fill/surface 슬롯)에는 사용 불가."
+    }
+  ]
+}

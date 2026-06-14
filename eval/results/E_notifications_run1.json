@@ -1,0 +1,24 @@
+{
+  "cell": "E",
+  "page": "notifications",
+  "run": 1,
+  "total_usages": 105,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.0095,
+  "removed_false_positives": 0,
+  "verify_notes": "[적대적 재검증 완료] slot 1건 CONFIRM: tabActiveStyle(L121) borderBottomColor에 primary.fill.base 사용. 거짓양성 기각 사유 없음 — canvas step 불일치 아님(border 속성에 fill 토큰 문제), neutral.fill.base 컴포넌트 채움 정상 케이스 아님. tokens-intent-first-desc.md 2단계 슬롯 규칙 명시: borderColor·border-* 속성 → border 슬롯만 허용, fill.*은 background/backgroundColor/bg 전용. primary.fill.base 설명='CTA 버튼 채움색'으로 border 용도 근거 없음. intent(primary)는 정답, slot만 틀림. 정답=primary.border.highest(탭 활성 하단 강조선 가장 또렷한 외곽선) 또는 primary.border.base. / 나머지 104건 정상: canvas 계열 레이아웃 배경 step-free OK, 읽지 않음 카드 primary.surface.base 정답표 일치, 읽음 카드 neutral.canvas.01 OK, 알림⑦⑧ 읽음 뱃지 neutral 정답표 일치, 환각·fg_text·hardcode 없음.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "page.tsx:121 / tabActiveStyle.borderBottomColor",
+      "used": "primary.fill.base",
+      "should": "primary.border.highest 또는 primary.border.base",
+      "note": "borderBottomColor(border 계열 CSS 속성)에 fill 토큰을 사용. 토큰 설명(tokens-intent-first-desc.md 2단계): borderColor·border-* 속성은 border 슬롯만 허용, fill.*은 background/backgroundColor/bg 전용. primary.fill.base 설명='CTA 버튼 채움색'으로 border 사용 근거 없음. 탭 활성 하단 강조선은 primary.border.highest(또렷한 외곽선 전용)가 적절. CONFIRM."
+    }
+  ]
+}

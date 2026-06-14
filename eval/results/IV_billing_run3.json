@@ -1,0 +1,16 @@
+{
+  "cell": "IV",
+  "page": "billing",
+  "run": 3,
+  "total_usages": 189,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0000,
+  "removed_false_positives": 0,
+  "verify_notes": "사이드바: dark 클래스 정상 적용(L29), 배경 canvas.neutral.02 명시. 모든 intent 정답: 처리중=warning, 환불완료=info, Pro카드=primary, Pro Check=primary, Free/Enterprise Check=positive, 로그아웃/삭제=critical. fill.*.base 위 inverse.text.base 7건 모두 정상. surface.neutral.transparent ghost 버튼 11건 정상. 환각·하드코딩·fg_text 오용 없음.",
+  "details": []
+}

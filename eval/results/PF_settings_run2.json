@@ -1,0 +1,66 @@
+{
+  "cell": "PF",
+  "page": "settings",
+  "run": 2,
+  "total_usages": 195,
+  "slot": 3,
+  "intent": 0,
+  "fg_text": 4,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 7,
+  "misuse_rate": 0.0359,
+  "removed_false_positives": 0,
+  "verify_notes": "7건 전부 confirm — 거짓양성 없음. slot 3건: (1) L446·L841 divider div backgroundColor에 border.neutral.subtle 사용(border.* 토큰은 borderColor 속성 전용, 1px 구분선이라도 backgroundColor 자리엔 surface.* 정답); (2) L816 토글핸들 backgroundColor에 text.inverse 사용(fill.inverse가 목록에 존재, text.* 전경 전용). fg_text 4건: L1055 비활성 체크박스 SVG path color에 text.neutral.default(icon.neutral.default 정답), L1084·L1113·L1142 체크된 체크박스 SVG path color에 text.inverse(icon.inverse 정답). SVG checkmark path는 아이콘 역할이므로 SCORING.md fg/text mismatch 규정 적용. intent 전 항목 일치(정답표 대조). 환각 없음.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "page.tsx:446",
+      "used": "border.neutral.subtle (backgroundColor)",
+      "should": "surface.neutral.default 또는 surface.neutral.muted (배경 계열)",
+      "note": "1px divider div의 backgroundColor에 border.* 계열 토큰 사용. border 토큰은 borderColor 속성 전용 — SCORING.md slot 정의: '잘못된 CSS 속성/역할에 사용'"
+    },
+    {
+      "type": "slot",
+      "location": "page.tsx:816",
+      "used": "text.inverse (backgroundColor)",
+      "should": "fill.inverse 또는 surface.neutral.ghost 계열 토큰",
+      "note": "토글 ON 핸들(흰 원형)의 backgroundColor에 text.inverse 사용. text.* 토큰은 전경(글자/아이콘) 색 전용 — SCORING.md slot 정의: '배경에 text/icon 계열 사용'. fill.inverse가 목록에 존재함"
+    },
+    {
+      "type": "slot",
+      "location": "page.tsx:841",
+      "used": "border.neutral.subtle (backgroundColor)",
+      "should": "surface.neutral.default 또는 surface.neutral.muted (배경 계열)",
+      "note": "카드4 구분선 div 동일 패턴. border.* 토큰을 backgroundColor에 사용 — slot 오용"
+    },
+    {
+      "type": "fg_text",
+      "location": "page.tsx:1055",
+      "used": "text.neutral.default",
+      "should": "icon.neutral.default 또는 icon.neutral.muted",
+      "note": "비활성 체크박스 SVG 체크마크 path에서 css({color:'text.neutral.default'})로 stroke 색상 제어. currentColor를 통한 아이콘 색 자리에 text.* 토큰 사용 — SCORING.md fg/text mismatch: '아이콘에 text 토큰 사용'. icon.neutral.default가 목록에 존재함"
+    },
+    {
+      "type": "fg_text",
+      "location": "page.tsx:1084",
+      "used": "text.inverse",
+      "should": "icon.inverse",
+      "note": "체크된 체크박스 SVG 체크마크 path에 css({color:'text.inverse'}) 사용. icon.inverse 토큰이 목록에 존재하는데 text.* 토큰을 아이콘 stroke 색 자리에 사용 — fg_text mismatch"
+    },
+    {
+      "type": "fg_text",
+      "location": "page.tsx:1113",
+      "used": "text.inverse",
+      "should": "icon.inverse",
+      "note": "동일 패턴 반복(체크된 체크박스 SVG 체크마크). text.inverse를 아이콘 색 자리에 사용 — fg_text mismatch"
+    },
+    {
+      "type": "fg_text",
+      "location": "page.tsx:1142",
+      "used": "text.inverse",
+      "should": "icon.inverse",
+      "note": "동일 패턴 반복(체크된 체크박스 SVG 체크마크). text.inverse를 아이콘 색 자리에 사용 — fg_text mismatch"
+    }
+  ]
+}

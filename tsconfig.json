@@ -1,0 +1,81 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "jsx": "preserve",
+    "strict": true,
+    "exactOptionalPropertyTypes": false,
+    "noPropertyAccessFromIndexSignature": false,
+    "noUncheckedIndexedAccess": false,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "skipLibCheck": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@ds-token-test/styled-system": [
+        "./styled-system"
+      ],
+      "@ds-token-test/styled-system/*": [
+        "./styled-system/*"
+      ],
+      "@ds-token-test/styled-system-property-first": [
+        "./styled-system-property-first"
+      ],
+      "@ds-token-test/styled-system-property-first/*": [
+        "./styled-system-property-first/*"
+      ],
+      "@ds-token-test/styled-system-intent-first": [
+        "./styled-system-intent-first"
+      ],
+      "@ds-token-test/styled-system-intent-first/*": [
+        "./styled-system-intent-first/*"
+      ],
+      "@ds-token-test/styled-system-intent-first-slotfirst": [
+        "./styled-system-intent-first-slotfirst"
+      ],
+      "@ds-token-test/styled-system-intent-first-slotfirst/*": [
+        "./styled-system-intent-first-slotfirst/*"
+      ],
+      "@ds-token-test/styled-system-intent-first-stepnames": [
+        "./styled-system-intent-first-stepnames"
+      ],
+      "@ds-token-test/styled-system-intent-first-stepnames/*": [
+        "./styled-system-intent-first-stepnames/*"
+      ]
+    },
+    "allowJs": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "panda.config.ts",
+    "panda.config.property-first.ts",
+    "panda.config.intent-first.ts",
+    "panda.config.intent-first-slotfirst.ts",
+    "panda.config.intent-first-stepnames.ts",
+    "next.config.mjs",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "styled-system",
+    "styled-system-property-first",
+    "styled-system-intent-first",
+    "styled-system-intent-first-slotfirst",
+    "styled-system-intent-first-stepnames"
+  ]
+}

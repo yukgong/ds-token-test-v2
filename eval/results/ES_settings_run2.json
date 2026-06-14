@@ -1,0 +1,17 @@
+{
+  "cell": "ES", "page": "settings", "run": 2,
+  "total_usages": 202,
+  "slot": 1, "intent": 0, "fg_text": 0, "hardcode": 0, "hallucination": 0,
+  "misuse_count": 1, "misuse_rate": 0.00495,
+  "removed_false_positives": 0,
+  "verify_notes": "시맨틱 컬러 토큰 202건(backgroundColor 51 + borderColor 36 + outlineColor 1 + color 114) 전수 집계. ①slot: L1010 — 토글 핸들 흰 원형에 backgroundColor:'inverse.text.default' 사용. inverse.text.default는 토큰 desc '진한 채움용 배경색 위에 얹는 글자에 사용'으로 text 슬롯 전용이며 backgroundColor에 사용 불가 → slot 오용 확정. 유효 토큰 목록에 inverse.fill/inverse.surface 토큰이 없어 대안이 제한적이나 슬롯 불일치 사실은 변하지 않음(IV run1 L829 동일 패턴 선례와 일치). 레이아웃 배경: 페이지 루트·사이드바·메인 콘텐츠 모두 neutral.canvas.01 사용, 카드 1~6 컨테이너 neutral.canvas.02 사용 — canvas 계열 올바르게 분리 적용. ②intent: 정답표 전항목 대조 — 활성메뉴/아바타/저장버튼=primary, 위험구역 메뉴/종료버튼/위험구역카드=critical, info 배너=info, 포커스링=primary.border.emphasis+focus.border, 오류=critical, 성공=positive, 경고배너=warning, ShieldCheck아이콘/활성화됨뱃지=positive, 토글=primary, 현재세션①=primary, 세션②③=neutral, 비활성입력=neutral+opacity 0.38 — 전부 정답. ③fg/text: 아이콘 요소 전부 .icon.* 슬롯, 텍스트 요소 전부 .text.* 슬롯(inverse.text.default는 글자 색에만 사용, 단 L1010 제외). ④hardcode: 색상 하드코딩 없음. ⑤hallucination: focus.border·primary.border.emphasis·positive.border.emphasis·critical.border.emphasis 등 사용 토큰 전부 유효 목록 내 존재 확인. 거짓양성 제거 0건.",
+  "details": [
+    {
+      "type": "slot",
+      "used": "backgroundColor: 'inverse.text.default'",
+      "should": "inverse.icon.default 또는 적합한 surface/canvas 토큰. inverse.text.default는 text 슬롯 전용(글자 color 속성)이며 backgroundColor에 사용 불가.",
+      "location": "L1010 — 카드4 2단계 인증 토글 핸들(흰 원형 div)",
+      "note": "primary.fill.default 위 토글 핸들 대비색이 필요했으나 text 슬롯 토큰을 backgroundColor에 적용. 유효 목록에 inverse.fill/surface 미존재로 선택지가 제한적이나 슬롯 불일치 확정."
+    }
+  ]
+}

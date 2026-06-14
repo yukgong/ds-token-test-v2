@@ -1,0 +1,24 @@
+{
+  "cell": "EN",
+  "page": "dashboard",
+  "run": 2,
+  "total_usages": 209,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.0048,
+  "removed_false_positives": 0,
+  "verify_notes": "사이드바 dark 클래스 정상 적용(L38). 툴팁 3개 모두 dark+neutral.canvas.03(반전 표면 처리 가이드 준수) → OK. 카드 컨테이너 neutral.surface.base 다수: E-nodesc는 설명 없어 surface/canvas 구분 모호 → 거짓양성 방지로 정상 처리. 세로 구분선 div에 bg:'neutral.border.base' → border 계열을 bg 속성에 사용(slot 오용 1건 confirm). 토큰 목록 규칙 L12-13: bg 속성은 canvas·surface·fill 전용, border 계열은 borderColor 전용. 모든 intent 정답 일치(positive/critical/warning/info). fg/text 오용 없음.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "L502 — 헤더 바 세로 구분선 div",
+      "used": "bg: 'neutral.border.base'",
+      "should": "bg 속성에는 canvas·surface·fill 계열만 허용. 세로 선은 borderColor로 neutral.border.base 적용하거나 neutral.fill.base를 bg에 사용.",
+      "note": "border 계열 토큰(neutral.border.base)을 CSS bg(background) 속성에 사용. 슬롯 규칙 위반: bg → canvas·surface·fill 전용, border 계열은 borderColor 전용."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "cell": "EN",
+  "page": "settings",
+  "run": 2,
+  "total_usages": 202,
+  "slot": 6,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 6,
+  "misuse_rate": 0.0297,
+  "removed_false_positives": 0,
+  "verify_notes": "[적대적 검증 완료] 6건 전부 CONFIRM, 거짓양성 0건. L28 dark 클래스: spec-settings.md L8 '가장 연한 중립 계열(라이트)' 사이드바 + test-prompt L108 명시 오용 기준 — dark 적용 시 neutral 토큰이 다크값으로 반전되어 spec과 반대로 렌더됨. 카드 1~5 컨테이너(L226·L476·L595·L763·L1004) neutral.surface.base: test-prompt L102 카드 컨테이너 = canvas 계열 필수 + L107 'canvas 아닌 neutral.surface.* → slot 오용' 명시 — step-free 규칙상 canvas 계열 사용 여부만 판정. 세션②③(L907·L949) neutral.surface.base는 test-prompt L103 '카드 안 중립 연한 박스 = neutral.canvas.03 또는 neutral.surface.base' 명시 허용으로 제외. 입력 배경·토글 핸들 neutral.canvas.01, 활성 메뉴 primary.*, info·warning·critical intent, inverse 전경, focus.border 전부 정상. 환각·하드코딩 0건.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "L28: 왼쪽 설정 메뉴(aside) 루트 dark 클래스 적용",
+      "used": "dark 클래스 (국소 다크 테마 교체)",
+      "should": "dark 클래스 없음 — 설정 메뉴는 라이트 사이드바(가장 연한 중립 계열)",
+      "note": "test-prompt-settings.md L108: '이 페이지의 설정 메뉴는 라이트 — dark 클래스 불필요. 사이드바라고 무조건 dark 적용하면 오용.' dark 클래스 적용 시 내부 neutral 토큰이 다크 모드 값으로 반전되어 어두운 사이드바로 렌더됨. spec은 가장 연한 중립 계열(라이트)을 요구하므로 역할/속성 불일치 → slot 오용."
+    },
+    {
+      "type": "slot",
+      "location": "L226: 카드 1(프로필 정보) 컨테이너 배경",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (canvas 계열 임의 step)",
+      "note": "레이아웃 layer 정답표: 카드 1~6 컨테이너 = neutral.canvas.02(step 자유). ★layer 규칙: 레이아웃 배경에 canvas가 아닌 neutral.surface.* → slot 오용."
+    },
+    {
+      "type": "slot",
+      "location": "L476: 카드 2(구독 플랜) 컨테이너 배경",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (canvas 계열 임의 step)",
+      "note": "레이아웃 layer 정답표: 카드 컨테이너 = canvas 계열 필수. neutral.surface 사용 → slot 오용."
+    },
+    {
+      "type": "slot",
+      "location": "L595: 카드 3(비밀번호 변경) 컨테이너 배경",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (canvas 계열 임의 step)",
+      "note": "레이아웃 layer 정답표: 카드 컨테이너 = canvas 계열 필수. neutral.surface 사용 → slot 오용."
+    },
+    {
+      "type": "slot",
+      "location": "L763: 카드 4(보안 설정) 컨테이너 배경",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (canvas 계열 임의 step)",
+      "note": "레이아웃 layer 정답표: 카드 컨테이너 = canvas 계열 필수. neutral.surface 사용 → slot 오용."
+    },
+    {
+      "type": "slot",
+      "location": "L1004: 카드 5(이메일 알림) 컨테이너 배경",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (canvas 계열 임의 step)",
+      "note": "레이아웃 layer 정답표: 카드 컨테이너 = canvas 계열 필수. neutral.surface 사용 → slot 오용."
+    }
+  ]
+}

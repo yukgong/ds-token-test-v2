@@ -1,0 +1,16 @@
+{
+  "cell": "PF",
+  "page": "notifications",
+  "run": 3,
+  "total_usages": 162,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 집계 162개. 읽지 않음 카드 배경(알림①~⑤) surface.brand.subtle=primary 정답. 읽음 카드 배경(알림⑥~⑧) surface.neutral.default=neutral 정답. 각 강조선/아이콘/뱃지 intent 일치(positive/critical/warning/info/brand). 읽음 뱃지(알림⑦ 처리됨·알림⑧ 안내) neutral 정답. 읽음 약화 opacity 처리 정상. 허용 목록 외 토큰 없음(환각 0). 인라인 style 없음. 오용 없음.",
+  "details": []
+}

@@ -1,0 +1,24 @@
+{
+  "cell": "PF",
+  "page": "dashboard",
+  "run": 1,
+  "total_usages": 141,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.0071,
+  "removed_false_positives": 0,
+  "verify_notes": "거짓양성 없음. L205 border.neutral.subtle → backgroundColor는 border slot을 fill 슬롯에 사용한 명확한 mismatch — CONFIRM. 1px divider를 bgcolor로 그리더라도 해당 속성은 fill 슬롯이므로 fill.neutral 또는 surface.neutral.muted가 정답.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "page.tsx:205",
+      "used": "border.neutral.subtle",
+      "should": "fill.neutral 또는 surface.neutral.muted",
+      "note": "dividerStyle의 backgroundColor에 border.* 계열 토큰 사용. border.* 는 테두리(stroke) 색상 전용 slot이며 배경 채움(fill/surface) 자리에 쓰면 slot mismatch. 룰북 §2 slot/role mismatch 정의 부합."
+    }
+  ]
+}

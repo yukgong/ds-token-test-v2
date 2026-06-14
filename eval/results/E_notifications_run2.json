@@ -1,0 +1,16 @@
+{
+  "cell": "E",
+  "page": "notifications",
+  "run": 2,
+  "total_usages": 107,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0000,
+  "removed_false_positives": 0,
+  "details": [],
+  "verify_notes": "총 107 사용처: single-quote 토큰 99개(neutral.canvas.01/02 포함) + accentToken prop double-quote 8개. 오용 없음. [레이아웃 layer] 루트=neutral.canvas.01(L966), 헤더=neutral.canvas.01(L23), 사이드바=neutral.canvas.02(L168), 알림목록=neutral.canvas.02(L787) — 모두 canvas 계열, step-free 규칙으로 step 불일치 채점 제외. [읽지 않음/읽음 배경] 읽지 않음 카드=primary.surface.base(L341 삼항, intent 정답표 일치), 읽음 카드=neutral.canvas.01(neutral 계열 정답). [강조선] accentToken 8개 모두 *.fill.base로 backgroundColor(배경) 사용 — fill을 배경에 쓰는 것은 정상 slot. [탭 강조선] primary.border.highest(L119) — run1의 fill.base 오용 수정됨, 정상. [카테고리 선택] primary.fill.base 배경+inverse.text.base 텍스트 — 정상(fill 위 inverse 패턴). [배지] 알림⑦'처리됨'=neutral(L580/583/584), 알림⑧'안내'=neutral(L603/606/607) — 정답표 읽음=중립화 규칙 일치. [intent 전체] 정답표 12항목 전부 일치. 환각(목록 외 토큰)·하드코딩(hex/rgb)·인라인style·fg_text 혼용 없음."
+}

@@ -1,0 +1,24 @@
+{
+  "cell": "PF",
+  "page": "notifications",
+  "run": 1,
+  "total_usages": 101,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.0099,
+  "removed_false_positives": 0,
+  "verify_notes": "L169 항목 confirm: border.neutral.default를 backgroundColor(fill 역할)에 사용하는 것은 진짜 slot 오용. SCORING.md 정의(테두리에 fill.*, 배경에 text/icon 역할 혼용)와 동일 구조 — border.*는 borderColor 전용이며 배경(fill) 자리엔 fill.neutral이 정답. 시각적으로 동일 hex를 alias하더라도 role 혼용이므로 거짓양성 아님. 거짓양성 제거 0건.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "page.tsx:169",
+      "used": "border.neutral.default",
+      "should": "fill.neutral (또는 surface.neutral.subtle 등 배경용 토큰)",
+      "note": "divider2의 backgroundColor 자리에 border.* 계열 토큰 사용. border 토큰은 borderColor 속성 전용이며 배경(fill) 역할에는 fill.neutral 등을 써야 함. SCORING.md slot 정의: '존재하는 토큰을 잘못된 CSS 속성/역할에 사용'."
+    }
+  ]
+}

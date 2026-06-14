@@ -1,0 +1,31 @@
+{
+  "cell": "EN",
+  "page": "dashboard",
+  "run": 3,
+  "total_usages": 227,
+  "slot": 2,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 2,
+  "misuse_rate": 0.0088,
+  "removed_false_positives": 0,
+  "verify_notes": "사이드바 dark 클래스 정상 적용(L38). 카드 컨테이너 neutral.surface.base 사용은 EN(설명 없음) 암에서 surface/canvas 구분 안내 없어 거짓양성으로 제외. 동적 colorMap(iconColorMap×3 + textColorMap×1 = 4) 포함 total_usages=227. 확정 오용 2건: ①세로 구분선 div bg:neutral.border.base(border 계열 토큰을 bg 속성에 사용), ②테이블 행 아바타 color:inverse.text.base on neutral.fill.base(진한 fill 아닌 곳에 inverse 사용 — tokens-intent-first-nodesc.md에 명시된 inverse 사용 제한 위반). 모든 intent 정답표 항목 일치(토스트 3종 positive/critical/info 정확, 통계카드 positive/critical/positive/warning 정확, 리소스 바 positive/warning/critical 정확, 하단카드 positive/critical/warning 정확). 환각 없음(전체 사용 토큰 유효 목록 내).",
+  "details": [
+    {
+      "type": "slot",
+      "location": "L464 — 헤더 바 세로 구분선 div",
+      "used": "bg: \"neutral.border.base\"",
+      "should": "bg 속성에는 canvas/surface/fill 계열만 허용. 세로 구분선은 neutral.fill.base 또는 neutral.surface.high 사용 필요.",
+      "note": "border 계열 토큰(neutral.border.base)을 CSS bg 속성에 사용. 슬롯 규칙 위반: bg → canvas·surface·fill 전용, border 계열은 borderColor 전용."
+    },
+    {
+      "type": "slot",
+      "location": "L1440 — 이벤트 테이블 행 사용자 아바타 이니셜 텍스트",
+      "used": "color: \"inverse.text.base\" (bg: neutral.fill.base 위)",
+      "should": "neutral.text.base 또는 neutral.text.low 사용. inverse.text.base는 진한 fill(primary.fill.base, critical.fill.base 등) 위 전용.",
+      "note": "neutral.fill.base는 라이트 모드에서 밝은 중립 fill — 진한 배경이 아님. tokens-intent-first-nodesc.md 명시: 'inverse.text.base = 진한 배경색을 사용하는 컴포넌트 위에 얹는 반대색'. 비dark 컨텍스트의 neutral.fill.base 위에 inverse 사용은 슬롯 오용."
+    }
+  ]
+}

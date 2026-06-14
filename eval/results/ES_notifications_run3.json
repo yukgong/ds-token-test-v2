@@ -1,0 +1,9 @@
+{
+  "cell": "ES", "page": "notifications", "run": 3,
+  "total_usages": 169,
+  "slot": 0, "intent": 0, "fg_text": 0, "hardcode": 0, "hallucination": 0,
+  "misuse_count": 0, "misuse_rate": 0.0,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 집계 169건. ①slot: 레이아웃 배경은 neutral.canvas.01~02 계열을 일관되게 사용(사이드바·메인·헤더·빈상태카드). 알림 카드·카운터 카드 컨테이너 배경은 surface/fill 계열로 분리 사용 — 모두 slot 기준 적합. ②intent: 정답표 대조 — 읽지 않음 카드 배경=primary.surface.default(①~⑤), 읽음 카드 배경=neutral.canvas.01(⑥~⑧), 강조선/아이콘/뱃지 각 계열(positive/critical/warning/info/primary) 정합. 알림⑦ '처리됨' 뱃지=neutral, 알림⑧ '안내' 뱃지=neutral(읽음 중립화) 모두 정답. ③fg_text: 아이콘에 icon 슬롯, 텍스트에 text 슬롯 일관 사용. fill 배경 위 텍스트에 inverse.text.default 적용. ④hardcode: 없음. ⑤hallucination: 사용된 모든 토큰(neutral.surface.strongest, positive/warning/info.border.emphasis 등)이 유효 목록에 존재. 오용 0건.",
+  "details": []
+}

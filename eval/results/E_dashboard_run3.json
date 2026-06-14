@@ -1,0 +1,24 @@
+{
+  "cell": "E",
+  "page": "dashboard",
+  "run": 3,
+  "total_usages": 198,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.0051,
+  "removed_false_positives": 0,
+  "verify_notes": "[적대적 재검증] L309 slot 오용 CONFIRM, 거짓양성 0건. neutral.border.base를 backgroundColor(divider div)에 사용 — 룰북 2단계 및 토큰목록 슬롯 규칙 양쪽 모두 'border 계열은 CSS border 관련 속성 전용, backgroundColor에는 canvas·surface·fill만 허용'을 명시. 1px div divider라는 시각적 의도와 무관하게 CSS 속성명이 backgroundColor이므로 슬롯 불일치 성립. step-free 예외는 canvas layer step 불일치(01↔02)에만 적용되며 이 건과 무관. neutral.fill.base / neutral.surface.base 등 대안 토큰 목록에 존재. E_notifications_run3·PF_dashboard_run1/3 동일 패턴 CONFIRM 선례와 일관. 나머지 197건 정상.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "Header > dividerClass (L309)",
+      "used": "backgroundColor: 'neutral.border.base'",
+      "should": "neutral.surface.base 또는 neutral.fill.base (backgroundColor 속성에는 canvas/surface/fill 계열만 허용)",
+      "note": "1px 너비 세로 구분선(divider)을 div의 배경색으로 구현하면서 border 계열 토큰을 backgroundColor에 사용. 룰북 2단계: 'backgroundColor·bg → canvas/surface/fill, borderColor/border-* → border'. CSS 속성명 기준 슬롯 불일치 → slot 오용 CONFIRM. step-free 예외(canvas layer step 불일치) 해당 없음."
+    }
+  ]
+}

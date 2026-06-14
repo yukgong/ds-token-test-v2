@@ -1,0 +1,16 @@
+{
+  "cell": "E",
+  "page": "billing",
+  "run": 1,
+  "total_usages": 138,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0000,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 집계 138건(grep 135건 + 삼항 조건식 backgroundColor 3토큰 추가). 사이드바: dark 클래스 국소 적용(L24) 확인 — neutral.canvas.02 배경 + 내부 neutral.text/icon 모두 정답(dark 클래스로 자동 다크값 전환). 활성 메뉴(결제 내역): overlay.lighten.hover 배경 위 neutral.icon.base + neutral.text.base = 정답. Pro 카드: primary 계열 일관성(surface/border/text/icon/fill) 완전 충족. 상태 뱃지: 결제완료=positive, 결제실패=critical, 처리중=warning(spec L86 정답), 환불완료=info(spec L87 정답). 미결제 카드: critical 계열 일관성 충족. 만료 임박 배너: warning 계열 정답. 로그아웃: critical 계열 정답. Free/Enterprise Check 아이콘: positive.icon.base 정답. Pro Check 아이콘: primary.icon.base 정답. 레이아웃 배경: neutral.canvas.01 정답. 카드/패널 배경: neutral.canvas.02 정답. 카드 아트 배경: neutral.surface.base — tokens desc에 '정적 표시/장식 블록의 가장 옅은 기본 배경색'으로 명시되어 장식용 카드 아트에 적용 가능 → OK. 환각: 모든 토큰이 tokens-intent-first-desc.md 목록 내 존재. 오용 0건.",
+  "details": []
+}

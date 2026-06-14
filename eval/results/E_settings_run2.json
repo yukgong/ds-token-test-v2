@@ -1,0 +1,24 @@
+{
+  "cell": "E",
+  "page": "settings",
+  "run": 2,
+  "total_usages": 201,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.0050,
+  "removed_false_positives": 0,
+  "verify_notes": "적대적 재검증 완료. 1차 플래그 1건(L841 inverse.text.base → backgroundColor) confirm. inverse.text.base는 tokens-intent-first-desc.md L102에 '진한 채움용 배경색 위에 얹는 글자에 사용'으로 명시된 text 슬롯 토큰. 슬롯 매칭 규칙상 backgroundColor에는 canvas/surface/fill 계열만 허용 — text 계열은 CSS color 전용. 스펙 L111 '흰 원형 핸들' 의도는 인정되나 올바른 대안은 neutral.surface.base(또는 neutral.canvas.01). 거짓양성 제거 조건(step-free·neutral.fill.base 컴포넌트 채움·canvas step 불일치) 중 해당 없음. 거짓양성 0건, 오용 1건 유지.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "page.tsx:841 / 토글 핸들 원형(div) backgroundColor",
+      "used": "inverse.text.base",
+      "should": "neutral.surface.base (또는 neutral.canvas.01)",
+      "note": "켜진 상태 토글의 흰 원형 핸들을 구현하기 위해 inverse.text.base를 backgroundColor에 사용. inverse.text.base는 text 슬롯 토큰으로 CSS color 속성 전용. backgroundColor에는 canvas/surface/fill 계열만 허용. slot 오용 확정."
+    }
+  ]
+}

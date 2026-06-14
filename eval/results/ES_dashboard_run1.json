@@ -1,0 +1,31 @@
+{
+  "cell": "ES", "page": "dashboard", "run": 1,
+  "total_usages": 164,
+  "slot": 2, "intent": 1, "fg_text": 0, "hardcode": 0, "hallucination": 0,
+  "misuse_count": 3, "misuse_rate": 0.0183,
+  "removed_false_positives": 4,
+  "verify_notes": "전수 집계: backgroundColor/color/borderColor 에 시맨틱 토큰을 쓴 라인 164건. 슬롯 오용 2건: ①L301 divider div에 backgroundColor:'neutral.border.default' — border 슬롯은 borderColor CSS 속성 전용이며 backgroundColor에 쓰면 slot mismatch. ②L935 trEven(짝수 테이블 행)에 backgroundColor:'neutral.surface.default' — 테이블 행은 레이아웃 배경이므로 canvas 계열 필요, surface 사용은 slot 오용(채점룰: 레이아웃 배경에 surface 쓰면 slot 오용). 인텐트 오용 1건: ③L271 툴팁 배경에 'neutral.fill.strongest' — intent 정답표에서 툴팁=inverse 지정, neutral 인텐트 토큰 사용은 intent mismatch. 하드코딩·환각·fg_text 오용 없음. 거짓양성 제거 4건: ①L939 trOdd에 canvas.02 사용(step 자유=오용 아님) ②L958 아바타 배경 surface.strongest(소형 컴포넌트=레이아웃 배경 아님) ③L318 primaryBtn hover에 primary.surface.strongest(호버 상태=유연) ④L75 active 네비 항목에 overlay.lighten.hover(desc 명시된 활성/선택 상태 오버레이 용도=정당).",
+  "details": [
+    {
+      "type": "slot",
+      "used": "neutral.border.default",
+      "should": "neutral.fill.default 또는 neutral.canvas.*/neutral.surface.* 계열",
+      "location": "HeaderBar divider (L301) — backgroundColor",
+      "note": "border 슬롯 토큰을 backgroundColor CSS 속성에 사용. border 슬롯은 borderColor 전용이므로 slot mismatch. 얇은 세로 구분선 배경에는 fill 계열 또는 canvas/surface 계열 사용 필요."
+    },
+    {
+      "type": "slot",
+      "used": "neutral.surface.default",
+      "should": "neutral.canvas.* 계열",
+      "location": "EventTable trEven (L935) — backgroundColor (짝수 테이블 행 배경)",
+      "note": "테이블 행은 레이아웃 배경에 해당하므로 canvas 계열 필요. surface 계열은 컴포넌트 수준 배경이며 레이아웃 행에 쓰면 slot 오용. 채점룰: '레이아웃 배경(테이블 행)에 surface를 쓰면 slot 오용'."
+    },
+    {
+      "type": "intent",
+      "used": "neutral.fill.strongest",
+      "should": "inverse.* 계열 (예: inverse.fill.default 또는 neutral.fill.strongest를 inverse intent로 대체)",
+      "location": "HeaderBar tooltip (L271) — backgroundColor",
+      "note": "intent 정답표: 툴팁 배경 = inverse. neutral.fill.strongest는 neutral 인텐트 토큰으로 intent mismatch. 토큰 desc가 툴팁 용도로 언급하지만 intent 정답표가 우선 기준."
+    }
+  ]
+}

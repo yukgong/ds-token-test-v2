@@ -1,0 +1,17 @@
+{
+  "cell": "ES", "page": "dashboard", "run": 2,
+  "total_usages": 215,
+  "slot": 1, "intent": 0, "fg_text": 0, "hardcode": 0, "hallucination": 0,
+  "misuse_count": 1, "misuse_rate": 0.00465,
+  "removed_false_positives": 4,
+  "verify_notes": "전수 집계: color:/backgroundColor:/borderColor: 토큰 211개(리터럴) + 이벤트 테이블 상태열 동적 레코드 4개(intentIconToken×3 branches + intentTextToken×1) = 215. 오용 1건: L483 수직 구분선 div에 neutral.border.default를 backgroundColor로 사용 — border 슬롯은 borderColor/border-* 속성 전용이며 backgroundColor에는 canvas/surface/fill 슬롯만 허용. 올바른 선택은 neutral.fill.default 또는 neutral.surface.default 등. 제거한 거짓양성 4건: ①②③ 툴팁 배경 neutral.fill.strongest×3(L361·L422·L464) — intent 정답표는 inverse를 요구하나 ES 토큰셋에 inverse 배경 토큰(inverse.fill/canvas 등)이 존재하지 않으며 토큰 desc가 '툴팁·뱃지 등 작은 떠 있는 컴포넌트의 진한 채움 색상'으로 명시적 허용; ④ 토글 핸들(흰 원) neutral.canvas.01(L1580) — 대안 토큰 없어 실질적 필요 인정. intent/fg_text/hardcode/hallucination 0건. 사이드바 dark 클래스 올바르게 적용(L31), focus.border 포커스 상태 정답, 레이아웃 canvas 계층 올바름.",
+  "details": [
+    {
+      "type": "slot",
+      "used": "neutral.border.default",
+      "should": "neutral.fill.default 또는 neutral.surface.default 등 fill/surface 계열",
+      "location": "L483 — Header 수직 구분선 div의 backgroundColor",
+      "note": "border 슬롯 토큰(neutral.border.default)을 backgroundColor CSS 속성에 사용. 슬롯 규칙상 border 토큰은 borderColor/border-* 전용이며 배경색에는 canvas·surface·fill 슬롯만 사용해야 함."
+    }
+  ]
+}

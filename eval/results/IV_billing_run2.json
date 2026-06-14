@@ -1,0 +1,16 @@
+{
+  "cell": "IV",
+  "page": "billing",
+  "run": 2,
+  "total_usages": 164,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0,
+  "removed_false_positives": 1,
+  "verify_notes": "처리중=warning(L898 OK), 환불완료=info(L909 OK), Pro Check=primary(L411 OK), Free/Ent Check=positive(L272·L514 OK). 사이드바: .dark 클래스 + canvas.neutral.01 정상 적용(L29·L34). 1차 플래그(L577 slot) → 거짓양성 reject: surface.neutral.base desc에 '정적 표시/장식 블록의 기본 배경색' 명시 — 카드 아트(160×100px 정적 장식 블록)는 desc 커버 범위 내 사용이므로 slot 오용 성립 안 됨. canvas 계열이 의미적으로 더 이상적이나 desc 허용 범위를 벗어나지 않아 채점 기준상 오용 아님.",
+  "details": []
+}

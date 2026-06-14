@@ -1,0 +1,38 @@
+{
+  "cell": "PF",
+  "page": "settings",
+  "run": 3,
+  "total_usages": 186,
+  "slot": 3,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 3,
+  "misuse_rate": 0.0161,
+  "removed_false_positives": 0,
+  "verify_notes": "3건 모두 confirm. 거짓양성 없음. (1) border.neutral.subtle→backgroundColor(divider 2건): border 토큰은 borderColor 전용이며 height:1px div의 backgroundColor 사용은 속성 mismatch — SCORING.md '잘못된 CSS 속성/역할에 사용' 해당. fill.inverse 존재 여부와 무관하게 border 계열은 배경 속성 부적합. (2) text.inverse→backgroundColor(토글 핸들): SCORING.md '배경에 text/icon 계열 사용' 명시 예시에 직접 해당, fill.inverse가 정답 토큰으로 목록에 존재.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "page.tsx:368",
+      "used": "border.neutral.subtle (backgroundColor)",
+      "should": "surface.neutral.* 계열 (배경에는 surface 토큰) 또는 실제 border CSS 속성 사용",
+      "note": "1px divider용 div에 border.* 토큰을 backgroundColor로 사용. border 토큰은 borderColor 속성 전용 — SCORING.md slot 정의: '잘못된 CSS 속성/역할에 사용'"
+    },
+    {
+      "type": "slot",
+      "location": "page.tsx:741",
+      "used": "border.neutral.subtle (backgroundColor)",
+      "should": "surface.neutral.* 계열 (배경에는 surface 토큰) 또는 실제 border CSS 속성 사용",
+      "note": "카드4 구분선 div에 동일 패턴 반복. border.* 토큰을 backgroundColor에 사용 — slot 오용"
+    },
+    {
+      "type": "slot",
+      "location": "page.tsx:718",
+      "used": "text.inverse (backgroundColor)",
+      "should": "fill.inverse 또는 surface 계열 토큰",
+      "note": "토글 ON 핸들(흰 원형)의 backgroundColor에 text.inverse 사용. text.* 토큰은 전경(글자) 전용 — SCORING.md slot 정의: '배경에 text/icon 계열 사용'"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "cell": "EN",
+  "page": "notifications",
+  "run": 3,
+  "total_usages": 148,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.0068,
+  "removed_false_positives": 0,
+  "verify_notes": "적대적 재검증 완료. 플래그 1건 전부 confirm. L103 borderBottomColor에 primary.fill.base 사용 = border 속성에 fill 슬롯 적용으로 slot mismatch 확정(토큰 목록 2단계: border-* 속성 → border 슬롯 전용). primary.border.base가 토큰 목록에 존재하므로 대안 유효. 거짓양성 0건. 나머지 fill.base 사용처(강조선·뱃지·버튼·카테고리 선택)는 모두 backgroundColor — background 계열에 fill 허용, 정상. 사이드바 neutral.canvas.02(라이트 배경, dark 클래스 불필요) 정상. 읽지 않음 카드 primary.surface.base·읽음 카드 neutral.canvas.01 intent 정답표 일치. 알림⑦·⑧ 읽음 뱃지 neutral — 정답표 일치.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "L103 — 활성 탭 하단 강조선 borderBottomColor",
+      "used": "primary.fill.base",
+      "should": "primary.border.base (또는 primary.border.high)",
+      "note": "CSS 속성 borderBottomColor는 border-* 계열. 토큰 룰북 2단계: border 관련 속성에는 border 슬롯만 사용 가능. fill 슬롯은 background·backgroundColor·bg에만 허용. primary.border.base가 목록에 존재하므로 대안 유효."
+    }
+  ]
+}

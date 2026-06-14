@@ -1,0 +1,24 @@
+{
+  "cell": "PF",
+  "page": "dashboard",
+  "run": 3,
+  "total_usages": 261,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.0038,
+  "removed_false_positives": 0,
+  "verify_notes": "플래그 1건 confirm — 거짓양성 없음. border.neutral.default를 backgroundColor(1px divider div)에 사용: property-first 토큰셋에서 border.*는 borderColor 전용 슬롯이며 backgroundColor용 중립 채움 토큰 fill.neutral이 존재하므로 slot mismatch 유지. 구현 패턴(1px div) 자체는 일반적이나 토큰 슬롯 규칙 위반.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "page.tsx:448",
+      "used": "border.neutral.default",
+      "should": "fill.neutral (또는 surface.neutral.* 계열)",
+      "note": "세로 구분선(divider) div의 backgroundColor에 border.* 토큰 사용. border.* 토큰은 borderColor 속성 전용이며, fill로 색을 채우는 역할에는 fill.neutral이 적합. 룰북 slot 정의: '잘못된 CSS 속성/역할에 사용'. fill.neutral 토큰이 목록에 존재하므로 대안 명확."
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "cell": "ES", "page": "settings", "run": 3,
+  "total_usages": 196,
+  "slot": 0, "intent": 0, "fg_text": 0, "hardcode": 0, "hallucination": 0,
+  "misuse_count": 0, "misuse_rate": 0.0,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 집계 196건(3-part 토큰 195 + focus.border 1). 레이아웃 layer: 최외곽·사이드바·main 모두 neutral.canvas.01, 카드 1~5 neutral.canvas.02, 위험구역 카드는 critical.surface.default(intent surface 정당). 세션2·3 배경 neutral.surface.default — 컴포넌트 레벨 배경으로 적정(canvas 미사용 불문). 비활성 입력(전화번호·사용자ID) neutral.surface.strongest + opacity 0.38 — desc '비활성 상태 또는 호버 인터랙션' 명시로 정당. 새 비밀번호 포커스 primary.border.emphasis + focus.border(outlineColor) — spec L84 '브랜드 계열 테두리 + 포커스 링' 충족. 모든 아이콘에 icon 슬롯, 모든 텍스트에 text 슬롯 적용 정확. 체크마크 span(✓)에 inverse.text.default — 텍스트 요소에 text 계열 정당. 안내 배너=info, 주의 배너=warning, 오류=critical, 성공=positive, 브랜드=primary 전원 일치. 하드코딩·환각 없음. 오용 0건.",
+  "details": []
+}

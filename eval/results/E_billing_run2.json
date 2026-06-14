@@ -1,0 +1,16 @@
+{
+  "cell": "E",
+  "page": "billing",
+  "run": 2,
+  "total_usages": 137,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 검토 완료. 오용 0건. 사이드바: dark 클래스 정상 적용(L24), 내부 neutral.icon/text.base 사용 → 자동 다크 변환(ok). 활성 메뉴 배경 overlay.lighten.hover + neutral 토큰(ok). 결제 카드 아트 L612 neutral.surface.base: desc '정적 표시/장식 블록의 가장 옅은 기본 배경색' 적용 → ok. 상태 뱃지 전부 정답표 일치(결제완료=positive, 결제실패=critical, 처리중=warning, 환불완료=info). Pro 카드 primary 계열 일관 사용(ok). canvas 계열 레이아웃 배경 정상 사용. L994 조건부 backgroundColor 3토큰(critical.surface.base, neutral.canvas.02, neutral.canvas.01) 모두 ok → total_usages 137(+2 조건부 추가).",
+  "details": []
+}

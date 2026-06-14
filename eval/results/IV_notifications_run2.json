@@ -1,0 +1,16 @@
+{
+  "cell": "IV",
+  "page": "notifications",
+  "run": 2,
+  "total_usages": 100,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0000,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 집계 100 usages. 헤더·사이드바·뱃지·알림카드·버튼·목록 전 컴포넌트 검토. canvas 계열 레이아웃 배경 올바름(step-free). 읽지않음 카드=surface.primary.base, 읽음 카드=canvas.neutral.01 — 정답표 일치. 강조선=fill.{intent}.base 5종 일관. inverse.text.base=fill 위 텍스트에만 사용. 알림⑦ '처리됨'·알림⑧ '안내' 뱃지=neutral-outline — 정답표 일치. 읽음 카드 icon/accent 약화=opacity 처리(색 계열 교체 없음). 오용 0건.",
+  "details": []
+}

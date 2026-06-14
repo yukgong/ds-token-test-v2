@@ -1,0 +1,17 @@
+{
+  "cell": "ES", "page": "billing", "run": 3,
+  "total_usages": 205,
+  "slot": 1, "intent": 0, "fg_text": 0, "hardcode": 0, "hallucination": 0,
+  "misuse_count": 1, "misuse_rate": 0.00488,
+  "removed_false_positives": 1,
+  "verify_notes": "전수 집계 결과 토큰 205건 사용. 유효 토큰 목록 대조: 환각 0건. 하드코딩 없음. 인텐트 정답표 전항목 일치(결제완료=positive, 결제실패=critical, 처리중=warning, 환불완료=info, 만료경고=warning, Pro카드=primary, Pro Check=primary, Free/Ent Check=positive, 로그아웃/삭제=critical). fg/text 혼용 없음(아이콘=.icon.*, 텍스트=.text.*). 슬롯 오용 1건: line 553의 카드 아트(180×110px 신용카드 모형 컨테이너) 배경에 neutral.fill.default 사용 — 토큰 desc가 '컨테이너·카드 배경은 canvas 계열 사용'을 명시, test-prompt layer표도 카드 아트=canvas.03 지정. fill은 토글·프로그레스 트랙 전용이므로 슬롯 오용. 거짓양성 제거 1건: line 81 사이드바 활성 내비 아이템 배경 neutral.fill.default — 내비 pill은 소형 컴포넌트이므로 '컨테이너·카드 배경 제외' 조건에 해당하지 않아 defensible, 오용 불인정.",
+  "details": [
+    {
+      "type": "slot",
+      "used": "neutral.fill.default",
+      "should": "neutral.canvas.03 (또는 neutral.canvas.02)",
+      "location": "line 553 — 결제 수단 섹션 카드 아트 컨테이너 backgroundColor",
+      "note": "fill.default desc: '컨테이너·카드 배경은 canvas 계열 사용' 명시. 180×110px 카드 아트 박스는 독립 컨테이너이므로 canvas.* 필요. test-prompt layer표는 카드 아트=canvas.03 지정."
+    }
+  ]
+}

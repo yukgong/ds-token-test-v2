@@ -1,0 +1,66 @@
+{
+  "cell": "EN",
+  "page": "settings",
+  "run": 1,
+  "total_usages": 179,
+  "slot": 6,
+  "intent": 1,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 7,
+  "misuse_rate": 0.0391,
+  "removed_false_positives": 0,
+  "verify_notes": "[적대적 검증 완료 — 7건 전부 confirm, 거짓양성 0건] 카드 1~5 컨테이너 배경 5건(L198·L414·L517·L672·L871) neutral.surface.base: 정답표(test-prompt-settings.md L98~108) '카드 1~6 컨테이너 = neutral.canvas.02(step 자유, canvas 계열 필수)' + 'surface 계열은 레이아웃 배경에 불가 → slot 오용' 명시 → 5건 confirm. 세션②③ 배경(L788·L825) neutral.surface.base는 정답표 L103 'neutral.canvas.03 또는 neutral.surface.base 허용'으로 정당하게 제외(거짓양성 아님). 토글 핸들(L716) inverse.text.base backgroundColor: 토큰 레퍼런스 'inverse.text.base = 글자 전용', SCORING.md '배경에 text/icon 계열 = slot 오용' → confirm. 활성 메뉴 배경(L73) neutral.fill.base: 정답표 '메뉴 활성(프로필) = primary', spec L12 '배경 강조 + 브랜드 계열' → neutral 사용은 intent 오용 → confirm. 카드6 critical.surface.base·입력 필드 neutral.surface.base·뱃지 위 inverse.text.base(color)·warning·info·positive intent 모두 정답표 일치로 정상. 환각 0건.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "L198: 카드 1(프로필 정보) 컨테이너 배경",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (canvas 계열 임의 step)",
+      "note": "레이아웃 layer 정답표에서 카드 1~6 컨테이너 배경은 neutral.canvas.02 정답(step 자유, canvas 계열 필수). surface 계열은 레이아웃 배경에 불가. ★layer 규칙: canvas 아닌 surface → slot 오용."
+    },
+    {
+      "type": "slot",
+      "location": "L414: 카드 2(구독 플랜) 컨테이너 배경",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (canvas 계열 임의 step)",
+      "note": "레이아웃 layer 정답표에서 카드 컨테이너 배경은 canvas 계열 필수. surface 계열 사용 → slot 오용."
+    },
+    {
+      "type": "slot",
+      "location": "L517: 카드 3(비밀번호 변경) 컨테이너 배경",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (canvas 계열 임의 step)",
+      "note": "레이아웃 layer 정답표에서 카드 컨테이너 배경은 canvas 계열 필수. surface 계열 사용 → slot 오용."
+    },
+    {
+      "type": "slot",
+      "location": "L672: 카드 4(보안 설정) 컨테이너 배경",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (canvas 계열 임의 step)",
+      "note": "레이아웃 layer 정답표에서 카드 컨테이너 배경은 canvas 계열 필수. surface 계열 사용 → slot 오용."
+    },
+    {
+      "type": "slot",
+      "location": "L716: 토글 핸들(켜진 상태) 원형 배경",
+      "used": "inverse.text.base",
+      "should": "inverse.icon.base (또는 적절한 배경 토큰)",
+      "note": "inverse.text.base는 텍스트 요소의 color 속성 전용 토큰. backgroundColor에 text 계열 토큰 사용 → slot 오용(CSS 속성-슬롯 불일치)."
+    },
+    {
+      "type": "slot",
+      "location": "L871: 카드 5(이메일 알림) 컨테이너 배경",
+      "used": "neutral.surface.base",
+      "should": "neutral.canvas.* (canvas 계열 임의 step)",
+      "note": "레이아웃 layer 정답표에서 카드 컨테이너 배경은 canvas 계열 필수. surface 계열 사용 → slot 오용."
+    },
+    {
+      "type": "intent",
+      "location": "L73: 메뉴 활성(프로필) 항목 배경",
+      "used": "neutral.fill.base",
+      "should": "primary.fill.base 또는 primary.surface.base",
+      "note": "정답표 '메뉴 활성(프로필) = primary'. 활성 메뉴 배경 강조에 neutral 계열 사용 → intent 오용. 아이콘·텍스트는 primary.icon.base·primary.text.base를 올바르게 썼으나 배경만 neutral로 계열 불일치."
+    }
+  ]
+}

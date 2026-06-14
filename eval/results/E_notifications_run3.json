@@ -1,0 +1,24 @@
+{
+  "cell": "E",
+  "page": "notifications",
+  "run": 3,
+  "total_usages": 103,
+  "slot": 1,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 1,
+  "misuse_rate": 0.0097,
+  "removed_false_positives": 0,
+  "verify_notes": "[적대적 검증] L205 divider의 backgroundColor에 neutral.border.low — CONFIRM. 토큰 설명(tokens-intent-first-desc.md L13-15)이 슬롯 엄격 일치를 명시: border 계열은 CSS border 관련 속성에만, backgroundColor에는 canvas·surface·fill만 허용. height:1px 구분선이라는 시각적 의도와 무관하게 CSS 속성이 backgroundColor이므로 slot 오용 성립. step-free 규칙과 무관한 쟁점이므로 거짓양성 reject 사유 없음. 나머지 102개 사용처: intent 정답표 전 항목 일치(읽지 않음 배경=primary.surface.base, 읽음=neutral.canvas.01, 강조선·뱃지 계열 모두 정확), layer 규칙 준수(헤더·사이드바·목록 배경 canvas 계열 사용, step 자유 규칙 적용), 거짓양성 0건.",
+  "details": [
+    {
+      "type": "slot",
+      "location": "page.tsx:205 (divider)",
+      "used": "neutral.border.low",
+      "should": "height:1px 구분선은 backgroundColor에 neutral.surface.base 또는 neutral.canvas.* 사용, 혹은 height:1px 대신 borderTop에 neutral.border.low 사용",
+      "note": "divider(height:1px div)의 backgroundColor에 border 계열 토큰 사용. 토큰 설명 및 슬롯 규칙에 border 계열은 'CSS border 관련 속성을 선언할 때만 사용 가능'이라 명시됨. backgroundColor는 canvas·surface·fill 슬롯 전용이므로 slot 오용 CONFIRM."
+    }
+  ]
+}

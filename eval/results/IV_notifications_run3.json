@@ -1,0 +1,16 @@
+{
+  "cell": "IV",
+  "page": "notifications",
+  "run": 3,
+  "total_usages": 147,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0000,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 147개 집계. 읽지 않음 카드 배경=surface.primary.base(정답 primary), 읽음 카드 배경=canvas.neutral.01(정답 neutral). 강조선 fill.*/base 5종 모두 정확. 뱃지 ⑦처리됨·⑧안내=neutral(정답). 활성 탭=text.primary.base+border.primary.highest(정답). fill.primary.base 위=inverse.text.base(정답). icon/text 혼용 없음. 목록 외 토큰 없음. 색 하드코딩 없음(lineHeight:1은 레이아웃값). 레이아웃 canvas 계열 정상 사용.",
+  "details": []
+}

@@ -1,0 +1,16 @@
+{
+  "cell": "PF",
+  "page": "billing",
+  "run": 1,
+  "total_usages": 135,
+  "slot": 0,
+  "intent": 0,
+  "fg_text": 0,
+  "hardcode": 0,
+  "hallucination": 0,
+  "misuse_count": 0,
+  "misuse_rate": 0.0,
+  "removed_false_positives": 0,
+  "verify_notes": "전수 검토 완료. 처리중=warning(L86), 환불완료=info(L87), Pro Check=icon.brand.default, Free/Enterprise Check=icon.positive.default — 모두 정답표 일치. 사이드바 surface.neutral.emphasis는 PF에서 canvas 개념 없으므로 layer 감사 제외, 어두운 solid 계열로 적절. 아이콘 버튼의 color에 icon.* 토큰 사용(line 752, 787)은 아이콘 버튼 패턴으로 fg_text 오용 아님. 36개 고유 토큰 전부 목록 내 존재 — 환각 없음.",
+  "details": []
+}
