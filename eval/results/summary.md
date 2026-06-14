@@ -34,7 +34,8 @@
 **IF+ 0.37% ≈ IFS 0.47%** (동일 셀 IF 토큰에서 step 단어만 `base/high/highest/low/lowest` → `default/strongest/emphasis/subtle/muted`로 교체). 통계적 동률 — 차이 3건(IFS dashboard run1 3건 등)은 런간 노이즈 수준이며 slot 9·intent 1로 패턴도 IF+와 동질. → **설명이 있으면 step 축 어휘 선택(base-계열 vs default-계열)도 오용률에 거의 영향 없음.** ②(순서)와 함께, 설명이 지배 변수일 때 네이밍 표면(순서·step 어휘)은 부차적임을 재확인.
 
 ### ③ 설계 함의 (SF 대비)
-- 설명 없는 셋 중: **IF− 1.70% > SF 0.85%**. property-first는 canvas/surface 구분이 없어(레이아웃·컴포넌트 모두 `surface.neutral.*`) **그 실수를 할 수조차 없음** → 표현력이 낮아 역설적으로 안전.
+- 설명 없는 셋(SF·IF−·IFC) 중, 같은 intent-first에 **canvas/surface 구분 힌트 한 단락만** 더한 **IFC 0.75% < SF 0.85%** — per-token 설명 없이도 핀포인트 힌트 하나로 외부 property-first 체계(SF)를 앞섬. (힌트조차 없는 IF−는 canvas/surface 혼동으로 1.70%; SF는 canvas/surface 구분이 없어 그 실수 자체가 불가능해 표현력↓이 역설적 안전.)
+- IFC의 `primary/critical.canvas` 환각 6건은 canvas 토큰 설명 문서 보완 시 줄어들 여지가 있어 보이나 **별도 실험 미진행(추정)**.
 - 설명 있는 intent/slot-first(IF+·INV 0.3%대) < SF 0.85% < 설명 없는 intent-first(IF− 1.70%).
 - **결론: 토큰 체계의 표현력(canvas 레이어)은 설명과 짝이어야 가치. 설명이 오용률의 지배 변수, 순서는 거의 무관.**
 

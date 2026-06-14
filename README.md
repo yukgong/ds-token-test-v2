@@ -116,7 +116,7 @@ Park UI 컴포넌트는 PandaCSS semantic token을 직접 참조하므로, confi
 2. **순서 효과 (IF+ ≈ INV)** — 미미. 동일 토큰을 슬롯/인텐트 순서만 반전한 두 셀이 0.37% ≈ 0.34%로 사실상 동일, 잔존 패턴까지 같음. → **설명이 제공되면 네이밍 순서는 거의 무관.**
 3. **step 어휘 효과 (IF+ ≈ IFS)** — 미미. 동일 토큰에서 step 단어만 `base/high/…` → `default/strongest/…`로 교체한 두 셀이 0.37% ≈ 0.47%로 통계적 동률(차이 3건은 런 노이즈), 잔존 패턴도 동질. → **설명이 제공되면 step 축 어휘 선택도 거의 무관.**
 4. **canvas/surface 단일 힌트 (IF− → IFC, 약 2.3× 감소, 단 부작용)** — IF−에 **canvas/surface 구분 한 단락만** 추가하니 1.70% → 0.75%. IF−의 지배적 실패였던 **surface→canvas 레이아웃 혼동이 사실상 소멸**(IFC 잔존 slot 10건은 토글 knob·세로 구분선으로 IF+/INV와 공유하는 커버리지성 잔여). → **IF−의 1.70%는 거의 전부 'canvas vs surface를 모름' 한 가지 원인이었음**이 입증됨. **단 부작용**: IFC에서 `primary.canvas.01`·`critical.canvas.01` **환각 6건** — "구조 컨테이너=canvas" 힌트를 색상 인텐트 컨테이너(Pro 박스·위험 구역)에 과확장했으나 canvas는 neutral 전용. 전체 per-token 설명(IF+)은 이 실수를 막아 **IF+(0.37%) < IFC(0.75%)**. → **핀포인트 힌트로 지배적 실패의 ~65%를 닫지만, 부분 설명은 새 과확장 환각을 유발.**
-5. **설계 함의** — 설명 없는 둘 중에서는 오히려 **IF−(1.70%) > SF(0.85%)**. SF(property-first 체계)는 canvas/surface 구분이 없어(레이아웃·컴포넌트 모두 `surface.neutral.*`) **그 실수를 할 수조차 없으므로** 표현력이 낮아 역설적으로 안전.
+5. **설계 함의 (IFC ↔ SF)** — 설명 없는 세 arm(SF·IF−·IFC) 중, 같은 intent-first에 **canvas/surface 구분 힌트 한 단락만** 더한 **IFC(0.75%)가 외부 property-first 체계 SF(0.85%)보다 낮다**. per-token 설명이 없어도 canvas/surface 핀포인트 힌트 하나로 SF를 앞선 것(힌트조차 없는 IF−는 canvas/surface 혼동으로 1.70%). 다만 IFC의 `primary/critical.canvas` 환각 6건은 **canvas 토큰 설명 문서를 보완하면 줄어들 여지가 있어 보이나, 이에 대한 별도 실험은 진행하지 않아 추정**이다.
 
 > 결론: 토큰 체계의 표현력(canvas 레이어 등)은 **설명과 짝을 이룰 때만** 가치를 가진다. 오용률의 핵심 변수는 **설명**이며, 네이밍 표면(순서 · step 어휘)은 거의 무관하다. canvas/surface 구분 같은 **핀포인트 힌트는 큰 폭 개선**을 주지만, 경계를 명시하지 않은 부분 설명은 과확장 환각을 부르므로 **완전한 per-token 설명이 가장 안전**하다.
 
