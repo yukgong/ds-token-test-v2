@@ -1,6 +1,6 @@
 {
   "PF": {
-    "label": "PF · property-first 이름만 (slot-first 네이밍, 설명 없음)",
+    "label": "SF · slot-first 이름만 (외부 property-first 체계, 설명 없음)",
     "cells": 12,
     "usages": 2006,
     "misuse": 17,
@@ -15,7 +15,7 @@
     "hallucination": 0
   },
   "EN": {
-    "label": "E− · intent-first 이름만 (설명 없음)",
+    "label": "IF− · intent-first 이름만 (설명 없음)",
     "cells": 12,
     "usages": 2300,
     "misuse": 39,
@@ -30,7 +30,7 @@
     "hallucination": 0
   },
   "EC": {
-    "label": "EC · intent-first 이름만 + canvas/surface 구분 설명만 (E−에 그 설명만 추가)",
+    "label": "IFC · intent-first 이름만 + canvas/surface 구분 힌트만 (IF−에 그 힌트만)",
     "cells": 12,
     "usages": 2129,
     "misuse": 16,
@@ -45,7 +45,7 @@
     "hallucination": 6
   },
   "E": {
-    "label": "E+ · intent-first 이름 + 설명",
+    "label": "IF+ · intent-first 이름 + 설명",
     "cells": 12,
     "usages": 1910,
     "misuse": 7,
@@ -60,7 +60,7 @@
     "hallucination": 0
   },
   "ES": {
-    "label": "ES · intent-first 이름 + 설명 (step 어휘 변경: muted/subtle/default/strongest/emphasis)",
+    "label": "IFS · intent-first 이름 + 설명 (step 어휘 변경: muted/subtle/default/strongest/emphasis)",
     "cells": 12,
     "usages": 2131,
     "misuse": 10,
@@ -75,7 +75,7 @@
     "hallucination": 0
   },
   "IV": {
-    "label": "INV · slot-first 이름 + 설명 (셀 E 토큰, 순서 반전)",
+    "label": "INV · slot-first 이름 + 설명 (셀 IF 토큰, 순서 반전)",
     "cells": 12,
     "usages": 2082,
     "misuse": 7,

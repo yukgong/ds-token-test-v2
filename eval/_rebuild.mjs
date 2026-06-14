@@ -5,12 +5,12 @@ import { readdirSync, readFileSync, writeFileSync } from 'fs';
 const RES = 'eval/results';
 const ROUTE = { E: 'intent-first', EN: 'e-nodesc', EC: 'e-canvas-hint', ES: 'step-rename', IV: 'inverse-desc', PF: 'property-first' };
 const ARM_LABEL = {
-  PF: 'PF · property-first 이름만 (slot-first 네이밍, 설명 없음)',
-  EN: 'E− · intent-first 이름만 (설명 없음)',
-  EC: 'EC · intent-first 이름만 + canvas/surface 구분 설명만 (E−에 그 설명만 추가)',
-  E: 'E+ · intent-first 이름 + 설명',
-  ES: 'ES · intent-first 이름 + 설명 (step 어휘 변경: muted/subtle/default/strongest/emphasis)',
-  IV: 'INV · slot-first 이름 + 설명 (셀 E 토큰, 순서 반전)',
+  PF: 'SF · slot-first 이름만 (외부 property-first 체계, 설명 없음)',
+  EN: 'IF− · intent-first 이름만 (설명 없음)',
+  EC: 'IFC · intent-first 이름만 + canvas/surface 구분 힌트만 (IF−에 그 힌트만)',
+  E: 'IF+ · intent-first 이름 + 설명',
+  ES: 'IFS · intent-first 이름 + 설명 (step 어휘 변경: muted/subtle/default/strongest/emphasis)',
+  IV: 'INV · slot-first 이름 + 설명 (셀 IF 토큰, 순서 반전)',
 };
 const ORDER = ['PF', 'EN', 'EC', 'E', 'ES', 'IV'];
 

@@ -67,28 +67,29 @@
 </head>
 <body>
 <header>
-  <h1>v3 토큰 오용률 — 6-arm 비교 (PF · E− · EC · E+ · ES · INV)</h1>
-  <div class="sub">동일 중립 스펙 · Sonnet 4.6 생성·블라인드 채점 · step-free layer · raw 정규화 오용률. PF=property-first 이름만 / E−=intent-first 이름만 / EC=E−에 canvas/surface 구분 설명만 추가 / E+=intent-first 이름+설명 / ES=intent-first 이름+설명(step 어휘 변경) / INV=slot-first 이름+설명(셀 E 토큰)</div>
+  <h1>v3 토큰 오용률 — 6-arm 비교 (SF · IF− · IFC · IF+ · IFS · INV)</h1>
+  <div class="sub">동일 중립 스펙 · Sonnet 4.6 생성·블라인드 채점 · step-free layer · raw 정규화 오용률. SF=slot-first 이름만(외부 property-first 체계) / IF−=intent-first 이름만 / IFC=IF−에 canvas/surface 구분 힌트만 추가 / IF+=intent-first 이름+설명 / IFS=intent-first 이름+설명(step 어휘 변경) / INV=slot-first 이름+설명(셀 IF 토큰 순서 반전)</div>
 </header>
 <div class="wrap">
   <table class="sum" id="sum"></table>
   <div class="note" id="keynote"></div>
   <div class="tabs" id="tabs">
     <span class="tab on" data-arm="ALL">전체</span>
-    <span class="tab" data-arm="PF">PF</span>
-    <span class="tab" data-arm="EN">E−</span>
-    <span class="tab" data-arm="EC">EC</span>
-    <span class="tab" data-arm="E">E+</span>
-    <span class="tab" data-arm="ES">ES</span>
+    <span class="tab" data-arm="PF">SF</span>
+    <span class="tab" data-arm="EN">IF−</span>
+    <span class="tab" data-arm="EC">IFC</span>
+    <span class="tab" data-arm="E">IF+</span>
+    <span class="tab" data-arm="ES">IFS</span>
     <span class="tab" data-arm="IV">INV</span>
   </div>
   <div class="grid" id="grid"></div>
   <div class="appendix" id="appendix"></div>
 </div>
 <div class="lb" id="lb"><img id="lbimg"></div>
-<script src="data.js?v=5arm-es"></script>
+<script src="data.js?v=6arm-iflabel"></script>
 <script>
 const D=window.DATA, order=D.order||['PF','EN','EC','E','ES','IV'], col={RF:'var(--rf)',PF:'var(--pf)',E:'var(--e)',EN:'var(--en)',EC:'var(--ec)',ES:'var(--es)',IV:'var(--iv)'};
+const LABEL={RF:'RF',PF:'SF',EN:'IF−',EC:'IFC',E:'IF+',ES:'IFS',IV:'INV'};
 // summary table — raw 단일 오용률
 let mx=Math.max(...order.map(a=>D.summary[a].rate));
 let h='<tr><th>arm</th><th>raw 오용률</th><th>cells</th><th>사용횟수</th><th>오용</th><th>slot</th><th>intent</th><th>fg/text</th><th>hardcode</th><th>환각</th></tr>';
@@ -100,14 +101,14 @@ document.getElementById('sum').innerHTML=h;
 document.getElementById('keynote').innerHTML=
  `<b>읽는 법.</b> 동일한 중립 스펙(4페이지)으로 6개 토큰 변형안을 Sonnet 4.6이 생성, 코드 기반 블라인드로 채점. <b>raw 정규화 오용률</b> = 오용 ÷ 시맨틱 컬러 토큰 사용 총횟수. layer(canvas)는 <b>step-free</b>(canvas 계열 사용 여부만, 01/02/03 정밀도 미채점). 각 arm × 4페이지 × 3런 = 12셀.`+
  `<ul style="margin:8px 0 0 0;padding-left:18px">`+
- `<li><b>PF</b> — property-first 이름만(slot-first 네이밍, 설명 없음 = 자동완성 동등). 별도 토큰 체계.</li>`+
- `<li><b>E−</b> — intent-first 이름만(설명 없음).</li>`+
- `<li><b>EC</b> — E−에 <b>canvas/surface 구분 설명만</b> 추가(나머지 이름만). (E−↔EC = canvas/surface 단일 힌트 효과)</li>`+
- `<li><b>E+</b> — intent-first 이름+설명. (E−↔E+ = 설명 효과 격리)</li>`+
- `<li><b>ES</b> — intent-first 이름+설명, <b>셀 E와 동일 토큰·값·순서</b>에서 step 어휘만 교체(muted/subtle/default/strongest/emphasis). (E+↔ES = step 어휘 효과 격리)</li>`+
- `<li><b>INV</b> — slot-first 이름+설명, <b>셀 E와 동일 토큰·값</b>을 순서만 반전. (E+↔INV = 순서 효과 격리)</li>`+
+ `<li><b>SF</b> — slot-first 이름만(외부 property-first 체계, 설명 없음 = 자동완성 동등). 비교 대조군.</li>`+
+ `<li><b>IF−</b> — intent-first 이름만(설명 없음).</li>`+
+ `<li><b>IFC</b> — IF−에 <b>canvas/surface 구분 힌트만</b> 추가(나머지 이름만). (IF−↔IFC = 핀포인트 힌트 효과)</li>`+
+ `<li><b>IF+</b> — intent-first 이름+설명. (IF−↔IF+ = 설명 효과 격리)</li>`+
+ `<li><b>IFS</b> — intent-first 이름+설명, <b>셀 IF와 동일 토큰·값·순서</b>에서 step 어휘만 교체(muted/subtle/default/strongest/emphasis). (IF+↔IFS = step 어휘 효과 격리)</li>`+
+ `<li><b>INV</b> — slot-first 이름+설명, <b>셀 IF와 동일 토큰·값</b>을 순서만 반전. (IF+↔INV = 순서 효과 격리)</li>`+
  `</ul>`+
- `<div style="margin-top:8px">결과: `+order.map(a=>`<b style="color:${col[a]}">${a} ${D.summary[a].rate}%</b>(${D.summary[a].misuse}/${D.summary[a].usages})`).join(' · ')+`</div>`;
+ `<div style="margin-top:8px">결과: `+order.map(a=>`<b style="color:${col[a]}">${LABEL[a]||a} ${D.summary[a].rate}%</b>(${D.summary[a].misuse}/${D.summary[a].usages})`).join(' · ')+`</div>`;
 // cards
 const grid=document.getElementById('grid');
 function render(arm){
@@ -119,7 +120,7 @@ function render(arm){
     const det=(c.details||[]).map(d=>`<div class="det"><span style="color:#ffd0d0">[${d.type||d.dimension||''}]</span> <span class="t">${d.used||d.token||''}</span> → ${d.should||d.property||''}<br><span style="color:#888">${d.location||d.where||''}</span> ${d.note?'· '+d.note:''}</div>`).join('');
     const rate=(100*c.misuse_count/c.total_usages).toFixed(1);
     return `<div class="card">
-      <div class="cap"><span class="id"><span class="pill ${c.cell}">${c.cell}</span> ${c.page} · run${c.run}</span>
+      <div class="cap"><span class="id"><span class="pill ${c.cell}">${LABEL[c.cell]||c.cell}</span> ${c.page} · run${c.run}</span>
         <span class="r" style="color:${col[c.cell]}">${rate}%</span></div>
       <img class="shot" src="${c.shot}" loading="lazy" onclick="zoom('${c.shot}')">
       <div class="meta">오용 ${c.misuse_count} / 사용 ${c.total_usages}
